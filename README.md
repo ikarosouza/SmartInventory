@@ -1,1 +1,1 @@
-# Cerberus
+# Smart Inventory
