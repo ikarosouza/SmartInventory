@@ -1,5 +1,5 @@
 package br.ufrn.imd.dominio;
 
-public class Admin {
+public class Admin extends User{
 
 }
