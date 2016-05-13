@@ -8,30 +8,30 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.ufrn.imd.dominio.Employee;
+import br.ufrn.imd.dominio.Sector;
 
 @Stateless
-public class EmployeeDao {
+public class SectorDao {
 	@PersistenceContext
     private EntityManager em;
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Employee save(Employee employee) {
-		if(employee.getMatricula() == 0)
-			em.persist(employee);
+	public Sector save(Sector sector) {
+		if(sector.getId() == 0)
+			em.persist(sector);
 		else
-			em.merge(employee);
-		return employee;
+			em.merge(sector);
+		return sector;
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void remove(Employee employee) {
-		employee = em.find(Employee.class, employee.getMatricula());
-		em.remove(employee);
+	public void remove(Sector sector) {
+		sector = em.find(Sector.class, sector.getId());
+		em.remove(sector);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Employee> list() {
-		return (List<Employee>) em.createQuery("select e from Employee e").getResultList();
+	public List<Sector> list() {
+		return (List<Sector>) em.createQuery("select s from Sector s").getResultList();
 	}
 }
