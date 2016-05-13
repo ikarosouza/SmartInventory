@@ -1,9 +1,20 @@
 package br.ufrn.imd.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class User {
+	
+	@Id
 	private int matricula;
+	@NotNull
 	private String name;
+	@NotNull @Column(unique=true)
 	private String login;
+	@NotNull
 	private String password;
 	
 	public int getMatricula() {

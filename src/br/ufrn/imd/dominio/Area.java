@@ -2,9 +2,19 @@ package br.ufrn.imd.dominio;
 
 import java.util.ArrayList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Area {
+	@Id @GeneratedValue
 	private int id;
+	@NotNull
 	private String name;
+	@OneToMany
 	private ArrayList<Sector> sectors;
 	
 	public int getId() {
