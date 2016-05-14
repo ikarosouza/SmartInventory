@@ -22,7 +22,7 @@ public class UserDao {
 		
 		try {
 			
-			Query q = em.createQuery("select u from Usuario u where login = :login");
+			Query q = em.createQuery("select u from User u where login = :login");
 			q.setParameter("login", login);
 		
 			return (User) q.getSingleResult();

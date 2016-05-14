@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+			
+		<h4> Novo Categoria - <h:outputText value="#{userMBean.userLogged.login}" /> </h4>
+		
+		<h:messages />
+		<h:form>
+			<fieldset>
+				<p> Descrição </p> <p> <h:inputText value="#{categoryMBean.category.description}" required="true"
+					requiredMessage="Descrição Obrigatória"/>
+				</p>
+				<p> 
+					<h:commandButton action="#{categoryMBean.addCategory()}" value="Cadastrar"/>
+					<h:commandButton action="#{categoryMBean.listCategories()}" value="Listagem" immediate="true"/> 
+				</p>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>

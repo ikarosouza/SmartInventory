@@ -8,13 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-@Entity
+//@Entity
 public class Area {
-	@Id @GeneratedValue
+//	@Id @GeneratedValue
 	private int id;
-	@NotNull
+//	@NotNull
 	private String name;
-	@OneToMany
+//	@OneToMany
 	private ArrayList<Sector> sectors;
 	
 	public int getId() {

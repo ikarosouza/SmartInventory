@@ -39,7 +39,7 @@ public class UserMBean {
 		
 			if(userBd.getPassword().equals(user.getPassword())){
 				userLogged = userBd;
-				return "/pages/index.jsf";
+				return "/views/index.jsf";
 			//senha incorreta
 			} 
 			else {
@@ -60,12 +60,12 @@ public class UserMBean {
 
 	public String newUser(){
 		user = new User();
-		return "/pages/user/form.jsf";
+		return "/views/user/form.jsf";
 	}
 	
 	public String listUsers(){
 		usersModel = new ListDataModel<User>(userDao.list());
-		return "/pages/user/list.jsf";
+		return "/views/user/list.jsf";
 	}
 	/* Dúvida em como cadastrar um novo usuario sem pegar o usuario em sessão
 	public String registerUser(){
@@ -79,7 +79,7 @@ public class UserMBean {
 		User userRemoved = usersModel.getRowData();
 		userDao.remove(userRemoved);
 		usersModel = new ListDataModel<User>(userDao.list());
-		return "/pages/user/list.jsf";
+		return "/views/user/list.jsf";
 	}
 	
 	public User getUser() {

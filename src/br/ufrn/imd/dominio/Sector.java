@@ -8,14 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-@Entity
+//@Entity
 public class Sector {
-	@Id @GeneratedValue
+//	@Id @GeneratedValue
 	private int id;
-	@NotNull
+//	@NotNull
 	private String name;
 	private ArrayList<Employee> employees;
-	@OneToMany
+//	@OneToMany
 	private ArrayList<Equipment> equipments;
 	
 	public int getId() {

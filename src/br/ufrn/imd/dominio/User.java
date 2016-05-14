@@ -2,26 +2,28 @@ package br.ufrn.imd.dominio;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
+@Table(name = "Usuario")
 public class User {
 	
 	@Id
 	private int matricula;
-	@NotNull
+//	@NotNull
 	private String name;
-	@NotNull @Column(unique=true)
+//	@NotNull @Column(unique=true)
 	private String login;
-	@NotNull
+//	@NotNull
 	private String password;
 	
-	public User(){
-		
-	}
+	public User(){}
 	
-	public User(String login, String password) {		
+	public User(int matricula, String login, String password) {	
+		this.matricula = matricula;
 		this.login = login;
 		this.password = password;
 	}

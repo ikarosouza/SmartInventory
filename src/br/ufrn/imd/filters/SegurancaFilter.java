@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.ufrn.imd.controllers.UserMBean;
 
-@WebFilter("/pages/*")
+@WebFilter("/views/*")
 public class SegurancaFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -23,10 +23,10 @@ public class SegurancaFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
-		UserMBean usuarioMBean = (UserMBean) req.getSession().getAttribute("usuarioMBean");
+		UserMBean userMBean = (UserMBean) req.getSession().getAttribute("userMBean");
 		
-		if (usuarioMBean == null || usuarioMBean.getUserLogged() == null) 
-			res.sendRedirect("/SistemaCadastro/index.jsf");
+		if (userMBean == null || userMBean.getUserLogged() == null) 
+			res.sendRedirect("/SmartInvenory/index.jsf");
 		else 
 			chain.doFilter(request, response);
 

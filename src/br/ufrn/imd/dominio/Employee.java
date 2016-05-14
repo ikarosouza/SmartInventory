@@ -8,16 +8,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-@Entity
+//@Entity
 public class Employee {
-	@Id
+//	@Id
 	private int matricula;
 	@NotNull
 	private String name;
 	private String role;
-	@OneToMany
+//	@OneToMany
 	private ArrayList<Equipment> equipments;
-	@ManyToOne
+//	@ManyToOne
 	private Sector sector;
 	
 	public int getMatricula() {
