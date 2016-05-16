@@ -1,6 +1,6 @@
 package br.ufrn.imd.dominio;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,16 +8,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-//@Entity
+@Entity
 public class Employee {
-//	@Id
+	@Id
 	private int matricula;
 	@NotNull
 	private String name;
 	private String role;
-//	@OneToMany
-	private ArrayList<Equipment> equipments;
-//	@ManyToOne
+	@OneToMany
+	private List<Equipment> equipments;
+	@ManyToOne
 	private Sector sector;
 	
 	public int getMatricula() {
@@ -38,10 +38,11 @@ public class Employee {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public ArrayList<Equipment> getEquipments() {
+	
+	public List<Equipment> getEquipments() {
 		return equipments;
 	}
-	public void setEquipments(ArrayList<Equipment> equipments) {
+	public void setEquipments(List<Equipment> equipments) {
 		this.equipments = equipments;
 	}
 	public Sector getSector() {

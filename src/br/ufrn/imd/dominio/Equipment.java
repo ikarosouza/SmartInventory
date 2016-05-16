@@ -5,17 +5,18 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-//@Entity
+
+@Entity
 public class Equipment {
-//	@Id
+	@Id
 	private int tombo;
-//	@Column(unique=true)
+	@Column(unique=true)
 	private String serialNumber;
 	private String model;
 	private String brand;
 	private String mac;
 	private int ip;
-//	@ManyToOne
+	@ManyToOne
 	private Category category;
 	private String status;	
 	
