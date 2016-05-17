@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+			
+		<h4> Listagem de Setores - <h:outputText value="#{userMBean.userLogged.login}" /> 
+		</h4>
+	
+		<h:form>
+			<h:dataTable value="#{sectorMBean.sectorsModel}" 
+			var="sector">
+				<h:column>
+    				<f:facet name="header">ID</f:facet>
+    				<h:outputText value="#{sector.id}"/>
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">Nome</f:facet>
+    				<h:outputText value="#{sector.name}"/>
+    			</h:column>
+    			
+    			<h:column>
+					<h:commandButton action="#{sectorMBean.editSector}" value="Editar" />
+    			</h:column>
+    				
+    			<h:column>
+					<h:commandButton action="#{sectorMBean.removeSector}" value="Remover" />
+    			</h:column>
+			</h:dataTable>
+			
+			<h:commandButton action="#{sectorMBean.newSector}" 
+			value="Novo Setor" />
+		</h:form>
+	</ui:define>
+</ui:composition>
