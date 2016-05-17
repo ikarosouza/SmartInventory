@@ -1,0 +1,203 @@
+body{
+	background: #A39989;
+	color: #FFF;
+	/*animation-name*/
+	-webkit-animation-name: fade-in;
+	-moz-animation-name: fade-in;
+	-ms-animation-name: fade-in;
+	-o-animation-name: fade-in;
+	animation-name: fade-in;
+	/*animation-duration*/
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+	-ms-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+	/*animation-timing-function*/
+	-webkit-animation-timing-function: linear;
+	-moz-animation-timing-function: linear;
+	-ms-animation-timing-function: linear;
+	-o-animation-timing-function: linear;
+	animation-timing-function: linear;
+	/*animation-iteration-count*/
+	-webkit-animation-iteration-count: 1;
+	-moz-animation-iteration-count: 1;
+	-ms-animation-iteration-count: 1;
+	-o-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+	-ms-animation-fill-mode: both;
+	-o-animation-fill-mode: both;
+	animation-fill-mode: both; 
+
+
+}
+
+ @-webkit-keyframes fade-in {
+ 	0% {
+		opacity: 0;
+	}
+	 
+	100% {
+		 
+		opacity: 1;
+	}
+}
+@-moz-keyframes fade-in {
+  	0% {
+		opacity: 0;
+	}
+	 
+	100% {
+		 
+		opacity: 1;
+	}
+}
+@-o-keyframes fade-in {
+  0% {
+		opacity: 0;
+	}
+	 
+	100% {
+		 
+		opacity: 1;
+	}
+}
+ 
+@keyframes fade-in {
+  0% {
+		opacity: 0;
+	}
+	 
+	100% {
+		 
+		opacity: 1;
+	}
+}
+
+
+
+
+#login-block{	 
+	padding-top: 50px;
+	padding-bottom: 25px;
+}
+
+
+.login-box{
+	position: relative;	
+	padding-bottom: 20px; 
+	margin-top: 80px; 
+}
+
+.loginback{
+	position: absolute;	
+
+}
+
+.loginlogo{	
+	position: absolute;
+	top: 80px;
+	left: 45px;
+}
+
+.loginuserbox{
+	position: absolute;
+	top: 160px;
+	left: 70px;
+}
+
+.loginpassbox{
+	position: absolute;
+	top: 220px;
+	left: 70px;
+}
+
+.loginbtnentrar{
+	position: absolute;
+	top: 370px;
+	left: 95px;
+	background: transparent;
+	border: none;	
+	background-image: url("../resources/img/btn-entrar.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.loginbtnentrar:hover{
+	position: absolute;
+	top: 370px;
+	left: 95px;
+	background: transparent;
+	border: none;
+	background-image: url("../resources/img/btn-entrar-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.input-user{
+	position: absolute;
+	top: 200px;
+	left: 15px; 
+	background: transparent;
+	border: none;
+	background-image:url("../resources/img/userbox.png");
+	background-repeat: no-repeat;
+	width: 300px;
+	height: 50px;
+	text-align: center;
+	color: #fff;
+	outline: none;
+}
+
+.input-pass{
+	position: absolute;
+	top: 270px;
+	left: 15px;
+	background: transparent;
+	border: none;
+	background-image: url("../resources/img/passbox.png");
+	background-repeat: no-repeat;
+	width: 300px;
+	height: 50px;
+	text-align: center;
+	color: #fff;
+	outline: none;
+}
+
+.login-logo{
+	 text-align: center;
+	 padding: 15px 0 10px;
+}
+
+ 
+#footer{
+	position: relative;
+	top: 400px;	
+	text-align: center;
+	color: #fff;	
+}
+
+ 
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
+=================================================================== */
+@media only screen and (max-width: 479px) {
+	#login-block{	 
+		padding-top: 10px;
+		padding-bottom: 25px;
+	}
+	
+}
+
+/* Tablet Portrait Size to Tablet Landscape Size (devices and browsers)
+=================================================================== */
+@media only screen and (min-width: 480px) and (max-width: 767px){
+	#login-block {	 
+		margin: 0 auto;
+		width: 420px;
+	}
+	
+}

@@ -1,22 +1,39 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:f="http://java.sun.com/jsf/core" 
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/include/template.xhtml">
-
-	<ui:define name="conteudo">
-
-		<h:messages/>
-		
-		<h:form>
-			<fieldset>
-			<p> Usuário: </p> <p> <h:inputText 
-			value="#{userMBean.user.login}" /> </p>
-			<p> Senha: </p> <p> <h:inputSecret
-			 value="#{userMBean.user.password}" /></p>
-			<p> <h:commandButton action="#{userMBean.logar}" value="Logar" /> </p>
-			</fieldset>
-		</h:form>
-		
-	</ui:define>
-</ui:composition>
+	>
+ 
+   <h:head>
+   <title>Smart Inventory</title>
+	   <h:outputStylesheet library="css" name="bootstrap.css" />
+	   <h:outputStylesheet library="css" name="login.css" />
+	   <h:outputScript library="js" name="bootstrap.min.js" />
+	   <h:outputScript library="js" name="bootstrap.js" />
+	   <h:outputScript library="js" name="jquery.js" />
+   </h:head>
+   <h:body class="fade-in">
+   	<div class="container" id="login-block">
+    		<div class="row">
+			    <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">		    	 
+			       <div class="login-box clearfix animated flipInY">			       		
+			        	<div class="login-logo">
+			        		<h:graphicImage library="img" name="logo.png" alt="Company Logo" />
+			        	</div> 			        	
+			        	<div class="login-form">
+			        	<h:messages />
+			        		<h:form>
+			        			 <h:inputText placeholder="usuario" class="input-user" type="text" value="#{userMBean.user.login}" />
+						   		 <h:inputSecret placeholder="senha" class="input-pass" type="password" value="#{userMBean.user.password}" />
+						   		 <h:commandButton class="loginbtnentrar" action="#{userMBean.logar}" value="" />
+							</h:form>								
+			        	</div> 			        	
+			       </div>	     
+			        
+			    </div>
+			</div>
+    	</div>
+    
+   </h:body>
+</html>
