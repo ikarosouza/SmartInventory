@@ -29,7 +29,7 @@
 				
 				<p> Categoria </p> 
 					<p> 
-						<h:selectOneMenu value="#{categoryMBean.category.description}">
+						<h:selectOneMenu value="#{equipmentMBean.equipment.category}" converter="categoryConverter">
 							<f:selectItem id="cat" itemLabel="Selecione a categoria" itemValue="" />
 							<f:selectItems  value ="#{categoryMBean.categoriesModel}" var="category" itemLabel="#{category.description}" itemValue="#{category}" />
 						</h:selectOneMenu>
