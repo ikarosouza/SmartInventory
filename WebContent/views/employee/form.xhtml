@@ -1,0 +1,36 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+			
+		<h4> Novo Funcionario - <h:outputText value="#{userMBean.userLogged.login}" /> </h4>
+		
+		<h:messages />
+		<h:form>
+			<fieldset>
+				<p> Matricula </p> <p> <h:inputText value="#{employeeMBean.employee.matricula}" required="true"
+					requiredMessage="Matricula Obrigatória"/>
+				</p>
+				<p> Nome </p> <p> <h:inputText value="#{employeeMBean.employee.name}" required="true"
+					requiredMessage="Nome Obrigatório"/>
+				</p>
+				<p> Cargo </p> <p> <h:inputText value="#{employeeMBean.employee.role}"/> </p>
+				
+				<p> Setor </p> 
+					<p> 
+						<h:selectOneMenu value="#{sectorMBean.sector.name}">
+							<f:selectItem id="sec" itemLabel="Selecione o setor" itemValue="" />
+							<f:selectItems  value ="#{sectorMBean.sectorsModel}" var="sector" itemLabel="#{sector.name}" itemValue="#{sector}" />
+						</h:selectOneMenu>
+					</p>
+				<p> 
+					<h:commandButton action="#{employeeMBean.addEmployee()}" value="Cadastrar"/>
+					<h:commandButton action="#{employeeMBean.listEmployees()}" value="Listagem" immediate="true"/> 
+				</p>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>

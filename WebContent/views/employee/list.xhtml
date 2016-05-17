@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+			
+		<h4> Listagem de funcionarios - <h:outputText value="#{userMBean.userLogged.login}" /> 
+		</h4>
+	
+		<h:form>
+			<h:dataTable value="#{employeeMBean.employeesModel}" 
+			var="employee">
+				<h:column>
+    				<f:facet name="header">Matricula</f:facet>
+    				<h:outputText value="#{employee.matricula}"/>
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">Nome</f:facet>
+    				<h:outputText value="#{employee.name}"/>
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">Cargo</f:facet>
+    				<h:outputText value="#{employee.role}"/>
+    			</h:column>
+    			
+    			<h:column>
+    				<f:facet name="header">Setor</f:facet>
+    				<h:outputText value="#{employee.sector}"/>
+    			</h:column>
+    			
+    			<h:column>
+					<h:commandButton action="#{employeeMBean.editEmployee}" value="Editar" />
+    			</h:column>
+    				
+    			<h:column>
+					<h:commandButton action="#{employeeMBean.removeEmployee}" value="Remover" />
+    			</h:column>
+			</h:dataTable>
+			
+			<h:commandButton action="#{employeeMBean.newEmployee}" 
+			value="Novo funcionario" />
+		</h:form>
+	</ui:define>
+</ui:composition>
