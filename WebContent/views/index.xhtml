@@ -1,21 +1,206 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:f="http://java.sun.com/jsf/core" 
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/include/template.xhtml">
+	>
+ 
+   <h:head>
+   <title>Smart Inventory</title>
+	   <h:outputStylesheet library="css" name="bootstrap.css" />
+	   <h:outputStylesheet library="css" name="font-awesome.css" />
+	   <h:outputStylesheet library="css" name="login.css" />
+	   <h:outputStylesheet library="css" name="zabuto_calendar.css" />
+	   <h:outputStylesheet library="css" name="jquery.gritter.css" />
+	   <h:outputStylesheet library="css" name="stylelineicon.css" />
+	   <h:outputStylesheet library="css" name="style.css" />
+	   <h:outputStylesheet library="css" name="style-responsive.css" />
+	   <h:outputScript library="js" name="bootstrap.min.js" />
+	   <h:outputScript library="js" name="bootstrap.js" />
+	   <h:outputScript library="js" name="jquery.js" />
+	   <h:outputScript library="js" name="Chart.js" />   
+	   <h:outputScript library="js" name="jquery-1.8.3.min.js" />
+	   <h:outputScript library="js" name="jquery.dcjqaccordion.2.7.js" />
+	   <h:outputScript library="js" name="jquery.scrollTo.min.js" />
+	   <h:outputScript library="js" name="jquery.nicescroll.js" />
+	   <h:outputScript library="js" name="jquery.sparkline.js" />
+	   <h:outputScript library="js" name="common-scripts.js" />
+	   <h:outputScript library="js" name="sparkline-chart.js" />
+	   <h:outputScript library="js" name="zabuto_calendar.js" />
+	   <h:outputScript library="js" name="gritter-conf.js" />
+	   <h:outputScript library="js" name="gritter/js/jquery.gritter.js" />
+   </h:head>
+   <h:body class="fade-in">
+   	
+   	
+  <section id="container" >
+      <!-- **********************************************************************************************************************************************************
+      TOP BAR CONTENT & NOTIFICATIONS
+      *********************************************************************************************************************************************************** -->
+      <!--header start-->
+      <header class="header black-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="index.html" class="logo"><b>SMART INVENTORY</b></a>
+            <!--logo end-->
+       
+            <div class="top-menu">
+            	<ul class="nav pull-right top-menu">            		
+                    <li><a class="logout" href="/SmartInventory/index.jsf">Logout</a></li>
+            	</ul>
+            </div>
+        </header>
+      <!--header end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN SIDEBAR MENU
+      *********************************************************************************************************************************************************** -->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+              
+              	  <p class="centered"><a href="#"><h:graphicImage library="img" name="dashboard/user.png" alt="User" /></a></p>
+              	  <h5 class="centered">Bem-vindo(a)!</h5>
+              	  	
+                  <li class="mt">
+                      <a class="active" href="/SmartInventory/views/index.jsf">
+                          <i class="fa fa-dashboard"></i>
+                          <span>Dashboard</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="categoria.html">                         
+                          <span>Categoria</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="equipamento.html">
+                          <span>Equipamento</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="funcionario.html">
+                          <span>Funcionário</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="setor.html">
+                          <span>Setor</span>
+                      </a>
+                  </li>
+                  <li class="sub-menu">
+                      <a href="area.html">
+                          <span>Área</span>
+                      </a>
+                  </li>  
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      
+      <!-- **********************************************************************************************************************************************************
+      MAIN CONTENT
+      *********************************************************************************************************************************************************** -->
+      <!--main content start-->
+      <section id="main-content">
+          <section class="wrapper">
 
-	<ui:define name="conteudo">
-			
-		<h4> Operações - <h:outputText value="#{userMBean.userLogged.login}" /> </h4>
-		<h:form>
-			<p> <h:commandLink action="#{categoryMBean.newCategory}" value="Nova Categoria"  /> </p>
-			<p> <h:commandLink action="#{categoryMBean.listCategories}" value="Listar Categorias"  /> </p>
-			<p> <h:commandLink action="#{equipmentMBean.newEquipment}" value="Novo Equipamento"  /> </p>
-			<p> <h:commandLink action="#{equipmentMBean.listEquipments}" value="Listar Equipamentos"  /> </p>
-			<p> <h:commandLink action="#{employeeMBean.newEmployee}" value="Novo Funcionario"  /> </p>
-			<p> <h:commandLink action="#{employeeMBean.listEmployees}" value="Listar Funcionarios"  /> </p>
-			<p> <h:commandLink action="#{sectorMBean.newSector}" value="Novo Setor"  /> </p>
-			<p> <h:commandLink action="#{sectorMBean.listSectors}" value="Listar Setores"  /> </p>
-		</h:form>
-	</ui:define>
-</ui:composition>
+              <div class="row">
+                  <div class="col-lg-12 main-chart">
+                  
+                  	<div class="row mtbox">
+                  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                  			<div class="box1">
+					  			<span class="li_heart"></span>
+					  			<h3>933</h3>
+                  			</div>
+					  			<p>933 equipamentos</p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_cloud"></span>
+					  			<h3>+48</h3>
+                  			</div>
+					  			<p>48 usuários</p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_stack"></span>
+					  			<h3>5</h3>
+                  			</div>
+					  			<p>5 categorias</p>
+                  		</div>
+                  		<div class="col-md-2 col-sm-2 box0">
+                  			<div class="box1">
+					  			<span class="li_news"></span>
+					  			<h3>10</h3>
+                  			</div>
+					  			<p>10 setores</p>
+                  		</div>
+                      <div class="col-md-2 col-sm-2 box0">
+                        <div class="box1">
+                  <span class="li_news"></span>
+                  <h3>30</h3>
+                        </div>
+                  <p>30 funcionários</p>
+                      </div>
+                  		
+                  	
+                  	</div><!-- /row mt -->	
+                  
+                               				
+					
+				
+                  </div><!-- /col-lg-9 END SECTION MIDDLE -->
+              </div><!--/row -->
+          </section>
+      </section>
+
+      <!--main content end-->
+
+  </section>
+
+
+		
+	<script type="application/javascript">
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+        
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
+        });
+        
+        
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    </script>
+    
+   </h:body>
+</html>
