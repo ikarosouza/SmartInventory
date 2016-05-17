@@ -36,6 +36,12 @@ public class CategoryMBean {
 		//category.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
 		categoryDao.save(category);
 		category = new Category();
+		return "/views/category/list.jsf";
+	}
+	
+	public String editCategory(){
+		category = categoriesModel.getRowData();
+		categoryDao.save(category);
 		return "/views/category/form.jsf";
 	}
 	

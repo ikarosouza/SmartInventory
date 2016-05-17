@@ -75,6 +75,12 @@ public class UserMBean {
 		return "/pages/user/form.jsf";
 	}*/
 	
+	public String editUser(){
+		user = usersModel.getRowData();
+		userDao.save(user);
+		return "/views/user/form.jsf";
+	}
+	
 	public String removeUser(){
 		User userRemoved = usersModel.getRowData();
 		userDao.remove(userRemoved);

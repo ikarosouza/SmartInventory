@@ -34,16 +34,22 @@ public class EquipmentMBean {
 		return "/views/equipment/list.jsf";
 	}
 	
+	public String editEquipment(){
+		equipment = equipmentsModel.getRowData();
+		equipmentDao.save(equipment);
+		return "/views/equipment/form.jsf";
+	}
+	
 	public String addEquipment() {
 		//employee.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
 		equipmentDao.save(equipment);
 		equipment = new Equipment();
-		return "/views/equipment/form.jsf";
+		return "/views/equipment/list.jsf";
 	}
 	
 	public String removeEquipment() {
-		Equipment categoryRemoved = equipmentsModel.getRowData();
-		equipmentDao.remove(categoryRemoved);
+		Equipment equpmentRemoved = equipmentsModel.getRowData();
+		equipmentDao.remove(equpmentRemoved);
 		equipmentsModel = new ListDataModel<Equipment>(equipmentDao.list());
 		return "/views/equipment/list.jsf";
 	}

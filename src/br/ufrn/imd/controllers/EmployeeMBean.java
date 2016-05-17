@@ -41,6 +41,12 @@ public class EmployeeMBean {
 		return "/views/employee/form.jsf";
 	}
 	
+	public String editEmployee(){
+		employee = employeesModel.getRowData();
+		employeeDao.save(employee);
+		return "/views/employee/form.jsf";
+	}
+	
 	public String removeEmployee() {
 		Employee employeeRemoved = employeesModel.getRowData();
 		employeeDao.remove(employeeRemoved);

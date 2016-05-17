@@ -41,6 +41,12 @@ public class AreaMBean {
 		return "/views/area/form.jsf";
 	}
 	
+	public String editArea(){
+		area = areasModel.getRowData();
+		areaDao.save(area);
+		return "/views/area/form.jsf";
+	}
+	
 	public String removeArea() {
 		Area areaRemoved = areasModel.getRowData();
 		areaDao.remove(areaRemoved);

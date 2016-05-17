@@ -41,6 +41,12 @@ public class SectorMBean {
 		return "/views/sector/form.jsf";
 	}
 	
+	public String editSector(){
+		sector = sectorsModel.getRowData();
+		sectorDao.save(sector);
+		return "/views/sector/form.jsf";
+	}
+	
 	public String removeSector() {
 		Sector sectorRemoved = sectorsModel.getRowData();
 		sectorDao.remove(sectorRemoved);
