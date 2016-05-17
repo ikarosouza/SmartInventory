@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+			
+		<h4> Novo Equipamento - <h:outputText value="#{userMBean.userLogged.login}" /> </h4>
+		
+		<h:messages />
+		<h:form>
+			<fieldset>
+				<p> Tombo </p> <p> <h:inputText value="#{equipmentMBean.equipment.tombo}" required="true"
+					requiredMessage="Descrição Obrigatória"/>
+				</p>
+				<p> Num. de Serie </p> <p> <h:inputText value="#{equipmentMBean.equipment.serialNumber}" required="true"
+					requiredMessage="Descrição Obrigatória"/>
+				</p>
+				<p> Marca </p> <p> <h:inputText value="#{equipmentMBean.equipment.brand}"/> </p>
+				
+				<p> Modelo </p> <p> <h:inputText value="#{equipmentMBean.equipment.model}"/> </p>
+				
+				<p> IP </p> <p> <h:inputText value="#{equipmentMBean.equipment.ip}"/> </p>
+				
+				<p> MAC </p> <p> <h:inputText value="#{equipmentMBean.equipment.mac}"/> </p>
+				
+				<p> Status </p> <p> <h:inputText value="#{equipmentMBean.equipment.status}"/> </p>
+				
+				<p> Categoria </p> 
+					<p> 
+						<h:selectOneMenu value="#{categoryMBean.category.description}">
+							<f:selectItem id="cat" itemLabel="Selecione a categoria" itemValue="" />
+							<f:selectItems  value ="#{categoryMBean.categoriesModel}" var="category" itemLabel="#{category.description}" itemValue="#{category}" />
+						</h:selectOneMenu>
+					</p>
+				<p> 
+					<h:commandButton action="#{equipmentMBean.addEquipment()}" value="Cadastrar"/>
+					<h:commandButton action="#{equipmentMBean.listEquipments()}" value="Listagem" immediate="true"/> 
+				</p>
+			</fieldset>
+		</h:form>
+	</ui:define>
+</ui:composition>
