@@ -113,7 +113,7 @@
                             </div> <!-- /#top -->
                             <div id="list" class="row">
                            		   		<h:form>
-										<h:dataTable class="table table-hover" value="#{sectorMBean.sectorsModel}" var="sector" columnClasses="column1,column2">
+										<h:dataTable class="table table-hover" value="#{sectorMBean.sectorsModel}" var="sector" columnClasses="column1,column2, column2">
 											<h:column>
 							    				<f:facet name="header"><div align="center">ID</div></f:facet>
 							    				<h:outputText value="#{sector.id}"/>
@@ -122,6 +122,10 @@
 							    				<f:facet name="header"><div align="center">Nome</div></f:facet>
 							    				<h:outputText value="#{sector.name}"/>
 							    			</h:column>		
+							    			<h:column>
+							    				<f:facet name="header"><div align="center">Área</div></f:facet>
+							    				<h:outputText value="#{sector.area.name}"/>
+							    			</h:column>	
 							    			<h:column>
 							    				<h:graphicImage class="rta" library="img" name="rta.png" alt="Company Logo" />
 							    			</h:column>						    			
