@@ -47,8 +47,8 @@
             <!--logo end-->
        
             <div class="top-menu">
-            	<ul class="nav pull-right top-menu">            		
-                    <li><a class="logout" href="/SmartInventory/index.jsf">Logout</a></li>
+            	<ul class="nav pull-right top-menu">  
+                    <li><a class="btnsair" href="/SmartInventory/index.jsf"></a></li>
             	</ul>
             </div>
         </header>
@@ -73,30 +73,16 @@
                       </a>
                   </li>
                   <li class="sub-menu">
-                      <a href="categoria.html">                         
-                          <span>Categoria</span>
+                      <a>                         
+                          <h:form>
+                          	<h:commandLink action="#{categoryMBean.listCategories()}" value="Categoria" />	                          
+                          	<h:commandLink action="#{equipmentMBean.listEquipments()}" value="Equipamento" />
+                          	<h:commandLink action="#{employeeMBean.listEmployees()}" value="Funcionário" />
+                          	<h:commandLink action="#{sectorMBean.listSectors()}" value="Setor" />
+                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />	
+                          </h:form>
                       </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="equipamento.html">
-                          <span>Equipamento</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="funcionario.html">
-                          <span>Funcionário</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="setor.html">
-                          <span>Setor</span>
-                      </a>
-                  </li>
-                  <li class="sub-menu">
-                      <a href="area.html">
-                          <span>Área</span>
-                      </a>
-                  </li>  
+                  </li>   
               </ul>
               <!-- sidebar menu end-->
           </div>
