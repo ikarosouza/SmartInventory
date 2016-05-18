@@ -11,6 +11,7 @@ import javax.faces.model.ListDataModel;
 import javax.inject.Inject;
 
 import br.ufrn.imd.dao.UserDao;
+import br.ufrn.imd.dominio.Category;
 import br.ufrn.imd.dominio.User;
 
 @ManagedBean
@@ -74,6 +75,13 @@ public class UserMBean {
 		user = new User();
 		return "/pages/user/form.jsf";
 	}*/
+	
+	public String addUser() {
+		//category.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
+		userDao.save(user);
+		user = new User();
+		return "/views/user/form.jsf";
+	}
 	
 	public String editUser(){
 		user = usersModel.getRowData();

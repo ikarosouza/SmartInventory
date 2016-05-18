@@ -79,11 +79,11 @@
                           	<h:commandLink action="#{equipmentMBean.listEquipments()}" value="Equipamento" />
                           	<h:commandLink action="#{employeeMBean.listEmployees()}" value="Funcionário" />
                           	<h:commandLink action="#{sectorMBean.listSectors()}" value="Setor" />
-                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />	
-                          	<h:commandLink action="#{userMBean.listUsers()}" value="Usuário" />
+                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />
+                          	<h:commandLink action="#{userMBean.listUsers()}" value="Usuário" />	
                           </h:form>
                       </a>
-                  </li> 
+                  </li>   
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -106,7 +106,7 @@
                         <div id="main" class="container-fluid">
                             <div id="top" class="row">
                                  <h1 class="page-header">
-                                     <small>Funcionário</small>
+                                     <small>Usuário</small>
                                 </h1>                                                      
                             </div> <!-- /#top -->
                             <div id="list" class="row centered">
@@ -117,53 +117,28 @@
 			                          <div class="col-lg-4">
 			                          </div>
 			                          <div class="col-sm-3">
-			                                Tombo
+			                                Matrícula
 			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.tombo}" required="true" requiredMessage="Tombo Obrigatório"/>			                                  
+			                                <h:inputText class="form-control" value="#{userMBean.user.matricula}" required="true" requiredMessage="Matrícula Obrigatória"/>			                                  
 			                          		<p></p>
-			                          		Num. de Serie
+			                          		Nome
 			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.serialNumber}" required="true" requiredMessage="Num. de Serie Obrigatório"/>			                                  
+			                                <h:inputText class="form-control" value="#{userMBean.user.name}" required="true" requiredMessage="Nome Obrigatório"/>			                                  
 			                          		<p></p>
-			                          		Marca
+			                          		Login
 			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.brand}"/>			                                  
+			                                <h:inputText class="form-control" value="#{userMBean.user.login}"/>			                                  
 			                          		<p></p>
-			                          		Modelo
+			                          		Senha
 			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.model}"/>			                                  
-			                          		<p></p>
-			                          		IP
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.ip}"/>			                                  
-			                          		<p></p>
-			                          		MAC
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.mac}"/>			                                  
-			                          		<p></p>
-			                          		Status
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.status}"/>			                                  
-			                          		<p></p>
-			                          		Categoria
-			                                <p></p>
-			                                <h:selectOneMenu class="form-control" value="#{categoryMBean.category.description}">
-												<f:selectItem id="sec" itemLabel="Selecione a categoria" itemValue="" />
-												<f:selectItems  value ="#{categoryMBean.categoriesModel}" var="category" itemLabel="#{category.description}" itemValue="#{category}" />
-											</h:selectOneMenu>			                                  
+			                                <h:inputSecret class="form-control" value="#{userMBean.user.password}"/>			                                  
 			                          		<p></p>
 			                          		
-			                          		<h:commandButton class="btncadastrar" action="#{equipmentMBean.addEquipment()}" value=""/>
-											<h:commandButton class="btnlistagem" action="#{equipmentMBean.listEquipments()}" value="" immediate="true"/>											
+			                          		<h:commandButton class="btncadastrar" action="#{userMBean.addUser()}" value=""/>
+											<h:commandButton class="btnlistagem" action="#{userMBean.listUsers()}" value="" immediate="true"/>											
 			                          </div>
 			                        </div>		
 									</fieldset>
-									
-									
-									
-									
-									
-									
 								</h:form>
                             </div> <!-- /#list -->                         
                         

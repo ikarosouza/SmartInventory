@@ -79,11 +79,11 @@
                           	<h:commandLink action="#{equipmentMBean.listEquipments()}" value="Equipamento" />
                           	<h:commandLink action="#{employeeMBean.listEmployees()}" value="Funcionário" />
                           	<h:commandLink action="#{sectorMBean.listSectors()}" value="Setor" />
-                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />	
-                          	<h:commandLink action="#{userMBean.listUsers()}" value="Usuário" />
+                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />
+                          	<h:commandLink action="#{userMBean.listUsers()}" value="Usuário" />	
                           </h:form>
                       </a>
-                  </li> 
+                  </li>   
               </ul>
               <!-- sidebar menu end-->
           </div>
@@ -106,65 +106,51 @@
                         <div id="main" class="container-fluid">
                             <div id="top" class="row">
                                  <h1 class="page-header">
-                                     <small>Funcionário</small>
-                                </h1>                                                      
+                                     <small>Usuário</small>
+                                </h1>
+                                
+                        <div class="col-md-3">
+                        </div>
                             </div> <!-- /#top -->
-                            <div id="list" class="row centered">
-                            	<h:messages />
-								<h:form>
-									<fieldset>
-									<div class="form-group centered">
-			                          <div class="col-lg-4">
-			                          </div>
-			                          <div class="col-sm-3">
-			                                Tombo
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.tombo}" required="true" requiredMessage="Tombo Obrigatório"/>			                                  
-			                          		<p></p>
-			                          		Num. de Serie
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.serialNumber}" required="true" requiredMessage="Num. de Serie Obrigatório"/>			                                  
-			                          		<p></p>
-			                          		Marca
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.brand}"/>			                                  
-			                          		<p></p>
-			                          		Modelo
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.model}"/>			                                  
-			                          		<p></p>
-			                          		IP
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.ip}"/>			                                  
-			                          		<p></p>
-			                          		MAC
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.mac}"/>			                                  
-			                          		<p></p>
-			                          		Status
-			                                <p></p>
-			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.status}"/>			                                  
-			                          		<p></p>
-			                          		Categoria
-			                                <p></p>
-			                                <h:selectOneMenu class="form-control" value="#{categoryMBean.category.description}">
-												<f:selectItem id="sec" itemLabel="Selecione a categoria" itemValue="" />
-												<f:selectItems  value ="#{categoryMBean.categoriesModel}" var="category" itemLabel="#{category.description}" itemValue="#{category}" />
-											</h:selectOneMenu>			                                  
-			                          		<p></p>
-			                          		
-			                          		<h:commandButton class="btncadastrar" action="#{equipmentMBean.addEquipment()}" value=""/>
-											<h:commandButton class="btnlistagem" action="#{equipmentMBean.listEquipments()}" value="" immediate="true"/>											
-			                          </div>
-			                        </div>		
-									</fieldset>
-									
-									
-									
-									
-									
-									
-								</h:form>
+                            <div id="list" class="row">
+                           		   <h:form>
+										<h:dataTable class="table table-hover" value="#{userMBean.usersModel}" var="user" columnClasses="column3,column4,column3,column4">
+											<h:column>
+							    				<f:facet name="header"><div align="center">Matrícula</div></f:facet>
+							    				<h:outputText value="#{user.matricula}"/>
+							    			</h:column>
+							    			
+							    			<h:column>
+							    				<f:facet name="header"><div align="center">Nome</div></f:facet>
+							    				<h:outputText value="#{user.name}"/>
+							    			</h:column>
+							    			
+							    			<h:column>
+							    				<f:facet name="header"><div align="center">Login</div></f:facet>
+							    				<h:outputText value="#{user.login}"/>
+							    			</h:column>
+							    			
+							    			<h:column>
+							    				<f:facet name="header"><div align="center">Senha</div></f:facet>
+							    				<h:outputText value="#{user.password}"/>
+							    			</h:column>
+							    			<h:column>
+							    				<h:graphicImage class="rta" library="img" name="rta.png" alt="Company Logo" />
+							    			</h:column>
+							    			<h:column>
+												<h:commandButton class="btneditar" action="#{userMBean.editUser}" value="" />
+							    			</h:column>
+							    				
+							    			<h:column>
+												<h:commandButton class="btnremover" action="#{userMBean.removeUser}" value="" />
+							    			</h:column>
+										</h:dataTable>
+										<div align="center">
+											<h:commandButton class="btnnovousuario" action="#{userMBean.newUser}" value="" />											
+											<h:commandButton class="btnlistagem" action="#{userMBean.listUsers()}" value="" immediate="true"/>
+										</div>
+										
+									</h:form>	
                             </div> <!-- /#list -->                         
                         
                         <!-- Modal -->
@@ -183,16 +169,9 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                         </div>  <!-- /#main -->
-
-
                     </div>
-                </div> 
-                  
-                  	
+                </div>                   	
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->
               </div><!--/row -->
           </section>
