@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -18,6 +19,8 @@ public class Sector {
 	private ArrayList<Employee> employees;
 	@OneToMany
 	private List<Equipment> equipments;
+	@ManyToOne
+	private Area area;
 	
 	public int getId() {
 		return id;
@@ -42,6 +45,12 @@ public class Sector {
 	}
 	public void setEquipments(List<Equipment> equipments) {
 		this.equipments = equipments;
+	}
+	public Area getArea() {
+		return area;
+	}
+	public void setArea(Area area) {
+		this.area = area;
 	}
 	
 }

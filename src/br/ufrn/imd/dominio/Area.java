@@ -13,8 +13,6 @@ public class Area {
 	private int id;
 	@NotNull
 	private String name;
-	@OneToMany
-	private List<Sector> sectors;
 	
 	public int getId() {
 		return id;
@@ -28,11 +26,6 @@ public class Area {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<Sector> getSectors() {
-		return sectors;
-	}
-	public void setSectors(List<Sector> sectors) {
-		this.sectors = sectors;
-	}
+
 	
 }

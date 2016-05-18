@@ -14,6 +14,13 @@
 				<p> Nome </p> <p> <h:inputText value="#{sectorMBean.sector.name}" required="true"
 					requiredMessage="Nome Obrigatório"/>
 				</p>
+				<p> Area </p> 
+					<p> 
+						<h:selectOneMenu value="#{sectorMBean.sector.area}" converter="areaConverter">
+							<f:selectItem id="cat" itemLabel="Selecione a area" itemValue="" />
+							<f:selectItems  value ="#{areaMBean.areasModel}" var="area" itemLabel="#{area.name}" itemValue="#{area}" />
+						</h:selectOneMenu>
+					</p>
 				<p>
 					<h:commandButton action="#{sectorMBean.addSector()}" value="Cadastrar"/>
 					<h:commandButton action="#{sectorMBean.listSectors()}" value="Listagem" immediate="true"/> 
