@@ -44,7 +44,7 @@ public class EquipmentMBean {
 		//employee.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
 		equipmentDao.save(equipment);
 		equipment = new Equipment();
-		return "/views/equipment/list.jsf";
+		return "/views/equipment/form.jsf";
 	}
 	
 	public String removeEquipment() {
