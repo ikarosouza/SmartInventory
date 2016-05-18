@@ -1,6 +1,6 @@
 body{
 	background: #A39989;
-	color: #FFF;
+	color: #fff;
 	/*animation-name*/
 	-webkit-animation-name: fade-in;
 	-moz-animation-name: fade-in;
@@ -114,6 +114,66 @@ body{
 	left: 70px;
 }
 
+.column1{ /* id */
+	width: 10px;
+	text-align: center;
+}
+
+.column2{ /* descricao */
+	width: 100px;
+	text-align: center;
+}
+
+.column3{ /* matricula */
+	width: 100px;
+	text-align: center;	
+}
+
+.column4{ /* nome */
+	width: 80px;
+	text-align: center;
+}
+
+.column5{ /* tombo */
+	width: 10px;
+	text-align: center;
+}
+
+.column6{ /* tombo */
+	width: 40px;
+	text-align: center;
+}
+
+.column7{ /* tombo */
+	width: 40px;
+	text-align: center;
+}
+
+.column8{ /* tombo */
+	width: 40px;
+	text-align: center;
+}
+
+.column9{ /* tombo */
+	width: 40px;
+	text-align: center;
+}
+
+.column10{ /* tombo */
+	width: 40px;
+	text-align: center;
+}
+
+.column11{ /* tombo */
+	width: 40px;
+	text-align: center;
+}
+
+.column12{ /* tombo */
+	width: 40px;
+	text-align: center;
+}
+
 .loginbtnentrar{
 	position: absolute;
 	top: 370px;
@@ -137,6 +197,233 @@ body{
 	width: 150px;
 	height: 34px;
 }
+
+.btneditar{
+	background: transparent;
+	position: absolute;	
+	right: 200px;
+	border: none;	
+	background-image: url("../resources/img/btn-editar.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btneditar:hover{
+	background: transparent;
+	position: absolute;	
+	right: 200px;
+	border: none;
+	background-image: url("../resources/img/btn-editar-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.rta{
+	background: transparent;
+	position: relative;	
+	left: 3000px;	
+	border: none;	
+	background-repeat: no-repeat;
+	width: 10px;
+	height: 34px;	
+}
+
+.btnremover{	
+	background: transparent;
+	position: absolute;	
+	right: 20px;	
+	border: none;	
+	background-image: url("../resources/img/btn-remover.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnremover:hover{	
+	background: transparent;
+	position: absolute;	
+	right: 20px;	
+	border: none;
+	background-image: url("../resources/img/btn-remover-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btncadastrar{
+	background: transparent;
+	position: relative;	
+	border: none;	
+	background-image: url("../resources/img/btn-cadastrar.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btncadastrar:hover{
+	background: transparent;
+	position: relative;	
+	border: none;
+	background-image: url("../resources/img/btn-cadastrar-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btnlistagem{
+	background: transparent;
+	position: relative;	
+	border: none;	
+	background-image: url("../resources/img/btn-listagem.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnlistagem:hover{
+	background: transparent;
+	position: relative;	
+	border: none;
+	background-image: url("../resources/img/btn-listagem-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btnnovacategoria{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;	
+	background-image: url("../resources/img/btn-novacategoria.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnnovacategoria:hover{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;
+	background-image: url("../resources/img/btn-novacategoria-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btnnovaarea{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;	
+	background-image: url("../resources/img/btn-novaarea.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnnovaarea:hover{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;
+	background-image: url("../resources/img/btn-novaarea-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btnnovoequipamento{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;	
+	background-image: url("../resources/img/btn-novoequipamento.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnnovoequipamento:hover{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;
+	background-image: url("../resources/img/btn-novoequipamento-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btnnovofuncionario{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;	
+	background-image: url("../resources/img/btn-novofuncionario.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnnovofuncionario:hover{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;
+	background-image: url("../resources/img/btn-novofuncionario-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btnnovosetor{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;	
+	background-image: url("../resources/img/btn-novosetor.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnnovosetor:hover{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;
+	background-image: url("../resources/img/btn-novosetor-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+.btnsair{
+	top: 10px;
+	background: transparent;
+	border: #56534f;	
+	background-image: url("../resources/img/btn-sair.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnsair:hover{
+	top: 10px;
+	background: transparent;
+	border: none;
+	background-image: url("../resources/img/btn-sair-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
+
+
 
 .input-user{
 	position: absolute;
