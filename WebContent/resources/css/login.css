@@ -314,6 +314,28 @@ body{
 	height: 34px;
 }
 
+.btnnovaarea{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;	
+	background-image: url("../resources/img/btn-novaarea.png");	
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;	
+}
+
+.btnnovaarea:hover{
+	background: transparent;
+	position: relative;
+	left: -50px;
+	border: none;
+	background-image: url("../resources/img/btn-novaarea-hover.png");
+	background-repeat: no-repeat;
+	width: 150px;
+	height: 34px;
+}
+
 .btnnovoequipamento{
 	background: transparent;
 	position: relative;
