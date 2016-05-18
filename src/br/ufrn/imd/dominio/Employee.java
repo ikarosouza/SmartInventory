@@ -15,8 +15,6 @@ public class Employee {
 	@NotNull
 	private String name;
 	private String role;
-	@OneToMany
-	private List<Equipment> equipments;
 	@ManyToOne
 	private Sector sector;
 	
@@ -37,13 +35,6 @@ public class Employee {
 	}
 	public void setRole(String role) {
 		this.role = role;
-	}
-	
-	public List<Equipment> getEquipments() {
-		return equipments;
-	}
-	public void setEquipments(List<Equipment> equipments) {
-		this.equipments = equipments;
 	}
 	public Sector getSector() {
 		return sector;

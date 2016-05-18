@@ -53,6 +53,11 @@
     			</h:column>
     			
     			<h:column>
+    				<f:facet name="header">Funcionario</f:facet>
+    				<h:outputText value="#{equipment.employee.name}"/>
+    			</h:column>
+    			
+    			<h:column>
 					<h:commandButton action="#{equipmentMBean.editEquipment}" value="Editar" />
     			</h:column>
     				

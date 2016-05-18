@@ -34,6 +34,13 @@
 							<f:selectItems  value ="#{categoryMBean.categoriesModel}" var="category" itemLabel="#{category.description}" itemValue="#{category}" />
 						</h:selectOneMenu>
 					</p>
+					<p> Setor </p> 
+					<p> 
+						<h:selectOneMenu value="#{equipmentMBean.equipment.employee}" converter="employeeConverter">
+							<f:selectItem id="emp" itemLabel="Selecione o funcionario" itemValue="" />
+							<f:selectItems  value ="#{employeeMBean.employeesModel}" var="employee" itemLabel="#{employee.name}" itemValue="#{employee}" />
+						</h:selectOneMenu>
+					</p>
 				<p> 
 					<h:commandButton action="#{equipmentMBean.addEquipment()}" value="Cadastrar"/>
 					<h:commandButton action="#{equipmentMBean.listEquipments()}" value="Listagem" immediate="true"/> 

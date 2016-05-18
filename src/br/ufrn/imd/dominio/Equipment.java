@@ -18,7 +18,9 @@ public class Equipment {
 	private int ip;
 	@ManyToOne
 	private Category category;
-	private String status;	
+	private String status;
+	@ManyToOne
+	private Employee employee;
 	
 	public int getTombo() {
 		return tombo;
@@ -67,6 +69,12 @@ public class Equipment {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public Employee getEmployee() {
+		return employee;
+	}
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 	
 }
