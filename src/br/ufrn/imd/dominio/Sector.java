@@ -17,8 +17,6 @@ public class Sector {
 	@NotNull
 	private String name;
 	private ArrayList<Employee> employees;
-	@OneToMany
-	private List<Equipment> equipments;
 	@ManyToOne
 	private Area area;
 	
@@ -39,12 +37,6 @@ public class Sector {
 	}
 	public void setEmployees(ArrayList<Employee> employees) {
 		this.employees = employees;
-	}
-	public List<Equipment> getEquipments() {
-		return equipments;
-	}
-	public void setEquipments(List<Equipment> equipments) {
-		this.equipments = equipments;
 	}
 	public Area getArea() {
 		return area;

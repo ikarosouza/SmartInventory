@@ -21,7 +21,7 @@
 				
 				<p> Setor </p> 
 					<p> 
-						<h:selectOneMenu value="#{sectorMBean.sector.name}">
+						<h:selectOneMenu value="#{employeeMBean.employee.sector}" converter="sectorConverter">
 							<f:selectItem id="sec" itemLabel="Selecione o setor" itemValue="" />
 							<f:selectItems  value ="#{sectorMBean.sectorsModel}" var="sector" itemLabel="#{sector.name}" itemValue="#{sector}" />
 						</h:selectOneMenu>
