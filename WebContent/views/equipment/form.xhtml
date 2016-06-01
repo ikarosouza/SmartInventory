@@ -147,14 +147,14 @@
 			                          		Categoria
 			                                <p></p>
 											<h:selectOneMenu class="form-control" value="#{equipmentMBean.equipment.category}" converter="categoryConverter">
-												<f:selectItem id="cat" itemLabel="Selecione a categoria" itemValue="" />
+												<f:selectItem id="cat" itemLabel="Selecione a categoria" itemValue="#{equipmentMBean.equipment.category}" />
 												<f:selectItems  value ="#{categoryMBean.categoriesModel}" var="category" itemLabel="#{category.description}" itemValue="#{category}" />
 											</h:selectOneMenu>
 											<p></p>
-											Setor
+											Funcionario
 											<p></p>											 
 											<h:selectOneMenu class="form-control" value="#{equipmentMBean.equipment.employee}" converter="employeeConverter">
-												<f:selectItem id="emp" itemLabel="Selecione o funcionario" itemValue="" />
+												<f:selectItem id="emp" itemLabel="Selecione o funcionario" itemValue="#{equipmentMBean.equipment.employee}" />
 												<f:selectItems  value ="#{employeeMBean.employeesModel}" var="employee" itemLabel="#{employee.name}" itemValue="#{employee}" />
 											</h:selectOneMenu>
 											<p></p>

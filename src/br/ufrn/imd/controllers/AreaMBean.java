@@ -63,6 +63,9 @@ public class AreaMBean {
 	}
 
 	public DataModel<Area> getAreasModel() {
+		if(areasModel == null){
+			areasModel = new ListDataModel<Area>(areaDao.list());
+		}
 		return areasModel;
 	}
 

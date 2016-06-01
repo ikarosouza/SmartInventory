@@ -124,7 +124,7 @@
 			                          		Area
 			                          		<p></p> 
 											<h:selectOneMenu class="form-control" value="#{sectorMBean.sector.area}" converter="areaConverter">
-												<f:selectItem id="cat" itemLabel="Selecione a area" itemValue="" />
+												<f:selectItem id="cat" itemLabel="Selecione a area" itemValue="#{sectorMBean.sector.area}" />
 												<f:selectItems  value ="#{areaMBean.areasModel}" var="area" itemLabel="#{area.name}" itemValue="#{area}" />
 											</h:selectOneMenu>
 											<p></p>

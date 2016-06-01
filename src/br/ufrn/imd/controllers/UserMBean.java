@@ -105,6 +105,9 @@ public class UserMBean {
 	}
 
 	public DataModel<User> getUsersModel() {
+		if(usersModel == null){
+			usersModel = new ListDataModel<User>(userDao.list());
+		}
 		return usersModel;
 	}
 

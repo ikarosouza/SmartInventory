@@ -63,6 +63,9 @@ public class EmployeeMBean {
 	}
 
 	public DataModel<Employee> getEmployeesModel() {
+		if(employeesModel == null){
+			employeesModel = new ListDataModel<Employee>(employeeDao.list());
+		}
 		return employeesModel;
 	}
 

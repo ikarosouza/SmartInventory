@@ -61,6 +61,9 @@ public class CategoryMBean {
 	}
 
 	public DataModel<Category> getCategoriesModel() {
+		if(categoriesModel == null){
+			categoriesModel = new ListDataModel<Category>(categoryDao.list());
+		}
 		return categoriesModel;
 	}
 

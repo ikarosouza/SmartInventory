@@ -41,7 +41,7 @@ public class EquipmentMBean {
 	}
 	
 	public String addEquipment() {
-		//employee.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
+		//equipment.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
 		equipmentDao.save(equipment);
 		equipment = new Equipment();
 		return "/views/equipment/form.jsf";
@@ -63,6 +63,9 @@ public class EquipmentMBean {
 	}
 
 	public DataModel<Equipment> getEquipmentsModel() {
+		if(equipmentsModel == null){
+			equipmentsModel = new ListDataModel<Equipment>(equipmentDao.list());
+		}
 		return equipmentsModel;
 	}
 

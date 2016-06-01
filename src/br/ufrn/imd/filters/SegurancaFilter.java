@@ -26,7 +26,7 @@ public class SegurancaFilter implements Filter {
 		UserMBean userMBean = (UserMBean) req.getSession().getAttribute("userMBean");
 		
 		if (userMBean == null || userMBean.getUserLogged() == null) 
-			res.sendRedirect("/SmartInvenory/index.jsf");
+			res.sendRedirect("/SmartInventory/index.jsf");
 		else 
 			chain.doFilter(request, response);
 

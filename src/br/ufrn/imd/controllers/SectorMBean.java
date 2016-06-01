@@ -63,6 +63,9 @@ public class SectorMBean {
 	}
 
 	public DataModel<Sector> getSectorsModel() {
+		if(sectorsModel == null){
+			sectorsModel = new ListDataModel<Sector>(sectorDao.list());
+		}
 		return sectorsModel;
 	}
 
