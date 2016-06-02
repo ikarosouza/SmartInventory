@@ -1,17 +1,103 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:f="http://java.sun.com/jsf/core" 
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-
-<h:head>
-	<h1>Smart Inventory</h1>
-</h:head>
-
-<h:body>
-	<div id="content" class="">
-		<ui:insert name="conteudo">Conteúdo</ui:insert>
-	</div>
-<!-- 	<h:commandButton action= "views/index" class="btn btn-default" value="Home"/> -->
-</h:body>
+	>
+ 
+   <h:head>
+   <title>Smart Inventory</title>
+	   <h:outputStylesheet library="css" name="bootstrap.css" />
+	   <h:outputStylesheet library="css" name="font-awesome.css" />
+	   <h:outputStylesheet library="css" name="login.css" />
+	   <h:outputStylesheet library="css" name="zabuto_calendar.css" />
+	   <h:outputStylesheet library="css" name="jquery.gritter.css" />
+	   <h:outputStylesheet library="css" name="stylelineicon.css" />
+	   <h:outputStylesheet library="css" name="style.css" />
+	   <h:outputStylesheet library="css" name="style-responsive.css" />
+	   <h:outputScript library="js" name="bootstrap.min.js" />
+	   <h:outputScript library="js" name="bootstrap.js" />
+	   <h:outputScript library="js" name="jquery.js" />
+	   <h:outputScript library="js" name="Chart.js" />   
+	   <h:outputScript library="js" name="jquery-1.8.3.min.js" />
+	   <h:outputScript library="js" name="jquery.dcjqaccordion.2.7.js" />
+	   <h:outputScript library="js" name="jquery.scrollTo.min.js" />
+	   <h:outputScript library="js" name="jquery.nicescroll.js" />
+	   <h:outputScript library="js" name="jquery.sparkline.js" />
+	   <h:outputScript library="js" name="common-scripts.js" />
+	   <h:outputScript library="js" name="sparkline-chart.js" />
+	   <h:outputScript library="js" name="zabuto_calendar.js" />
+	   <h:outputScript library="js" name="gritter-conf.js" />
+	   <h:outputScript library="js" name="gritter/js/jquery.gritter.js" />
+   </h:head>
+   <h:body class="fade-in">
+	  <section id="container" >
+	      <!-- **********************************************************************************************************************************************************
+	      TOP BAR CONTENT & NOTIFICATIONS
+	      *********************************************************************************************************************************************************** -->
+	      <!--header start-->
+	      <header class="header black-bg">
+	            <!--logo start-->
+	            <a href="index.html" class="logo"><b>SMART INVENTORY</b></a>
+	            <!--logo end-->
+	       
+	            <div class="top-menu">
+	            	<ul class="nav pull-right top-menu">  
+	                    <li><a class="btnsair" href="/SmartInventory/index.jsf"></a></li>
+	            	</ul>
+	            </div>
+	        </header>
+	      <!--header end-->
+	      
+	      <!-- **********************************************************************************************************************************************************
+	      MAIN SIDEBAR MENU
+	      *********************************************************************************************************************************************************** -->
+	      <!--sidebar start-->
+	      <aside>
+	          <div id="sidebar"  class="nav-collapse " rendered="#{userMBean.logged}">
+	              <!-- sidebar menu start-->
+	              <ul class="sidebar-menu" id="nav-accordion">
+	              
+	              	  <p class="centered"><a href="#"><h:graphicImage library="img" name="dashboard/user.png" alt="User" /></a></p>
+	              	  <h5 class="centered">Bem-vindo(a)! <h:outputLabel value="#{userMBean.userLogged.name}" /></h5>
+	                  <li class="sub-menu">
+	                  	  <a class="active" href="/SmartInventory/views/index.jsf">
+	                          <i class="fa fa-home"></i>
+	                          <span>Home</span>
+	                      </a>
+	                      <a>                         
+	                          <h:form>
+	                          	<h:commandLink action="#{categoryMBean.listCategories()}" value="Categoria" />	                          
+	                          	<h:commandLink action="#{equipmentMBean.listEquipments()}" value="Equipamento" />
+	                          	<h:commandLink action="#{employeeMBean.listEmployees()}" value="Funcionário" />
+	                          	<h:commandLink action="#{sectorMBean.listSectors()}" value="Setor" />
+	                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />	
+	                          </h:form>
+	                      </a>
+	                  </li>   
+	              </ul>
+	              <!-- sidebar menu end-->
+	          </div>
+	      </aside>
+	      <!--sidebar end-->
+	      
+	      <!-- **********************************************************************************************************************************************************
+	      MAIN CONTENT
+	      *********************************************************************************************************************************************************** -->
+	      <!--main content start-->
+	      <section id="main-content">
+	          <section class="wrapper">
+	
+	              <div class="row">
+	                  <div class="col-lg-12 main-chart">
+							<ui:insert name="conteudo">Conteúdo</ui:insert>
+	                  </div><!-- /col-lg-9 END SECTION MIDDLE -->
+	              </div><!--/row -->
+	          </section>
+	      </section>
+	
+	      <!--main content end-->
+	
+	  </section>
+   </h:body>
 </html>

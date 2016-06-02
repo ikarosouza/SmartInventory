@@ -1,19 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:ui="http://java.sun.com/jsf/facelets" 
-	xmlns:f="http://java.sun.com/jsf/core" 
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	>
- 
-   <h:head>
-   <title>Smart Inventory</title>
-	   <h:outputStylesheet library="css" name="bootstrap.css" />
-	   <h:outputStylesheet library="css" name="login.css" />
-	   <h:outputScript library="js" name="bootstrap.min.js" />
-	   <h:outputScript library="js" name="bootstrap.js" />
-	   <h:outputScript library="js" name="jquery.js" />
-   </h:head>
-   <h:body class="fade-in">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
    	<div class="container" id="login-block">
     		<div class="row">
 			    <div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">		    	 
@@ -34,6 +25,5 @@
 			    </div>
 			</div>
     	</div>
-    
-   </h:body>
-</html>
+ 	</ui:define>
+</ui:composition>
