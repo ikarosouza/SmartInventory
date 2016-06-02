@@ -1,6 +1,5 @@
 package br.ufrn.imd.dominio;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,7 +16,8 @@ public class Sector {
 	private int id;
 	@NotNull
 	private String name;
-	private ArrayList<Employee> employees;
+	@OneToMany(cascade = CascadeType.ALL ,mappedBy = "sector")
+	private List<Employee> employees;
 	@ManyToOne
 	private Area area;
 	
@@ -33,10 +33,10 @@ public class Sector {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public ArrayList<Employee> getEmployees() {
+	public List<Employee> getEmployees() {
 		return employees;
 	}
-	public void setEmployees(ArrayList<Employee> employees) {
+	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
 	public Area getArea() {

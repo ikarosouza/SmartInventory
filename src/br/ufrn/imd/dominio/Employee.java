@@ -18,6 +18,8 @@ public class Employee {
 	private String role;
 	@ManyToOne
 	private Sector sector;
+	@OneToMany(cascade = CascadeType.ALL ,mappedBy = "employee")
+	private List<Equipment> equipments;
 	
 	public int getMatricula() {
 		return matricula;
@@ -42,5 +44,11 @@ public class Employee {
 	}
 	public void setSector(Sector sector) {
 		this.sector = sector;
+	}
+	public List<Equipment> getEquipments() {
+		return equipments;
+	}
+	public void setEquipments(List<Equipment> equipments) {
+		this.equipments = equipments;
 	}
 }
