@@ -31,15 +31,15 @@
 							    				<h:graphicImage class="rta" library="img" name="rta.png" alt="Company Logo" />
 							    		</h:column>				    			
 						    			<h:column>						    			
-											<h:commandButton class="btneditar" action="#{areaMBean.viewArea}" value="" />
+											<h:commandButton class="btneditar" action="#{areaMBean.editArea}" value="" />
 						    			</h:column>						    				
 						    			<h:column>
 											<h:commandButton class="btnremover" action="#{areaMBean.removeArea}" value="" />
 						    			</h:column>
 									</h:dataTable>
 									<div align="center">
-									<h:commandButton class="btnnovaarea" action="#{areaMBean.newArea}" value="" />
-									<h:commandButton class="btnlistagem" action="#{areaMBean.listAreas()}" value="" immediate="true"/>
+										<h:commandButton class="btnnovaarea" action="#{areaMBean.newArea}" value="" />
+										<h:commandButton class="btnlistagem" action="#{areaMBean.listAreas()}" value="" immediate="true"/>
 									</div>
 								</h:form>
                             </div> <!-- /#list -->  

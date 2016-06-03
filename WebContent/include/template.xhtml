@@ -60,20 +60,17 @@
 	              
 	              	  <p class="centered"><a href="#"><h:graphicImage library="img" name="dashboard/user.png" alt="User" /></a></p>
 	              	  <h5 class="centered">Bem-vindo(a)! <h:outputLabel value="#{userMBean.userLogged.name}" /></h5>
-	                  <li class="sub-menu">
-	                  	  <a class="active" href="/SmartInventory/views/index.jsf">
-	                          <i class="fa fa-home"></i>
-	                          <span>Home</span>
-	                      </a>
-	                      <a>                         
+	                  <li class="sub-menu">	                  	                           
 	                          <h:form>
+	                          	<a href="/SmartInventory/views/index.jsf">
+	                          	<i class="fa fa-home"></i>
+	                          	<span>Home</span></a>
 	                          	<h:commandLink action="#{categoryMBean.listCategories()}" value="Categoria" />	                          
 	                          	<h:commandLink action="#{equipmentMBean.listEquipments()}" value="Equipamento" />
 	                          	<h:commandLink action="#{employeeMBean.listEmployees()}" value="Funcionário" />
 	                          	<h:commandLink action="#{sectorMBean.listSectors()}" value="Setor" />
 	                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />	
 	                          </h:form>
-	                      </a>
 	                  </li>   
 	              </ul>
 	              <!-- sidebar menu end-->
