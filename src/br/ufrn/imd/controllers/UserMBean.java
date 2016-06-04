@@ -23,6 +23,8 @@ public class UserMBean {
 	
 	private DataModel<User> usersModel;
 	
+	private boolean logged = false;
+	
 	@Inject
 	private UserDao userDao;
 	
@@ -38,6 +40,7 @@ public class UserMBean {
 			//existe e senha está correta
 		
 			if(userBd.getPassword().equals(user.getPassword())){
+				logged = true;
 				userLogged = userBd;
 				return "/views/index.jsf";
 			//senha incorreta
@@ -113,6 +116,14 @@ public class UserMBean {
 
 	public void setUsersModel(DataModel<User> usersModel) {
 		this.usersModel = usersModel;
+	}
+
+	public boolean isLogged() {
+		return logged;
+	}
+
+	public void setLogged(boolean logged) {
+		this.logged = logged;
 	}
 	
 }

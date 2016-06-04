@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+                  <div class="row">
+                    <div class="col-lg-12">
+
+                        <div id="main" class="container-fluid">
+                            <div id="top" class="row">
+                                 <h1 class="page-header">
+                                     <small>Área</small>
+                                </h1>
+                                
+                        <div class="col-md-3">
+                        </div>
+                            </div> <!-- /#top -->
+                            <div id="list" class="row">
+                            	<h:form>
+				    				<div align="left">ID: <h:outputText value="#{areaMBean.area.id}"/></div>
+				    				<div align="left">Nome: <h:outputText value="#{areaMBean.area.name}"/></div>
+									
+									<div align="left">
+									<h:commandButton class="btneditar" action="#{areaMBean.editArea}" value="" />
+									<h:commandButton class="btnremover" action="#{areaMBean.removeArea}" value="" />
+									</div>
+								</h:form>
+                            </div> <!-- /#list -->                       
+                        </div>  <!-- /#main -->
+                    </div>
+                </div> 
+	</ui:define>
+</ui:composition>
