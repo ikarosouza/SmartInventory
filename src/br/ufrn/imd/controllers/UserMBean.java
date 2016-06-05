@@ -40,8 +40,8 @@ public class UserMBean {
 			//existe e senha está correta
 		
 			if(userBd.getPassword().equals(user.getPassword())){
-				logged = true;
 				userLogged = userBd;
+				this.logged = true;
 				return "/views/index.jsf";
 			//senha incorreta
 			} 
@@ -70,13 +70,12 @@ public class UserMBean {
 		usersModel = new ListDataModel<User>(userDao.list());
 		return "/views/user/list.jsf";
 	}
-	/* Dúvida em como cadastrar um novo usuario sem pegar o usuario em sessão
-	public String registerUser(){
-		user.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
+	
+	public String addUser(){
 		userDao.save(user);
 		user = new User();
 		return "/pages/user/form.jsf";
-	}*/
+	}
 	
 	public String editUser(){
 		user = usersModel.getRowData();
@@ -120,10 +119,6 @@ public class UserMBean {
 
 	public boolean isLogged() {
 		return logged;
-	}
-
-	public void setLogged(boolean logged) {
-		this.logged = logged;
 	}
 	
 }

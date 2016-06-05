@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+                  <div class="row">
+                    <div class="col-lg-12">
+
+                        <div id="main" class="container-fluid">
+                            <div id="top" class="row">
+                                 <h1 class="page-header">
+                                     <small>Usuario</small>
+                                </h1>
+                                
+                        <div class="col-md-3">
+                        </div>
+                            </div> <!-- /#top -->
+                            <div id="list" class="row">
+                           		   		<h:form>
+										<h:dataTable class="table table-hover" value="#{userMBean.usersModel}" var="user" columnClasses="column1,column2, column2">
+											<h:column>
+							    				<f:facet name="header"><div align="center">Matricula</div></f:facet>
+							    				<h:outputText value="#{user.matricula}"/>
+							    			</h:column>							    			
+							    			<h:column>
+							    				<f:facet name="header"><div align="center">Nome</div></f:facet>
+							    				<h:outputText value="#{user.name}"/>
+							    			</h:column>		
+							    			<h:column>
+							    				<f:facet name="header"><div align="center">Login</div></f:facet>
+							    				<h:outputText value="#{user.login}"/>
+							    			</h:column>	
+							    			<h:column>
+							    				<h:graphicImage class="rta" library="img" name="rta.png" alt="Company Logo" />
+							    			</h:column>						    			
+							    			<h:column>
+												<h:commandButton class="btneditar" action="#{userMBean.editUser}" value="" />
+							    			</h:column>							    				
+							    			<h:column>
+												<h:commandButton class="btnremover" action="#{userMBean.removeUser}" value="" />
+							    			</h:column>
+										</h:dataTable>
+										<div align="center">
+											<h:commandButton class="btn-novousuario" action="#{userMBean.newUser}" value="" />
+											<h:commandButton class="btnlistagem" action="#{userMBean.listUsers()}" value="" immediate="true"/>
+										</div>	
+									</h:form>	
+                            </div> <!-- /#list -->                         
+                        </div>  <!-- /#main -->
+
+
+                    </div>
+                </div> 
+                  
+  	</ui:define>
+</ui:composition>

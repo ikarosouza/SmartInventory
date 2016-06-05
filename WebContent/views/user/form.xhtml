@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/include/template.xhtml">
+
+	<ui:define name="conteudo">
+                  <div class="row">
+                    <div class="col-lg-12">
+
+                        <div id="main" class="container-fluid">
+                            <div id="top" class="row">
+                                 <h1 class="page-header">
+                                     <small>Usuario</small>
+                                </h1>
+                                                      
+                            </div> <!-- /#top -->
+                            <div id="list" class="row centered">
+                            	<h:messages />
+								<h:form>
+									<fieldset>
+									<div class="form-group centered">
+			                          <div class="col-lg-4">
+			                          </div>
+			                          <div class="col-sm-3">
+			                          		Matricula
+			                                <p></p>
+			                                <h:inputText class="form-control" value="#{userMBean.user.matricula}" required="true" requiredMessage="Matricula Obrigatória"/>			                                  
+			                          		<p></p>
+			                                Nome
+			                                <p></p>
+			                                <h:inputText class="form-control" value="#{userMBean.user.name}" required="true" requiredMessage="Nome Obrigatório"/>			                                  
+			                          		<p></p>
+			                          		Login
+			                                <p></p>
+			                                <h:inputText class="form-control" value="#{userMBean.user.login}" required="true" requiredMessage="Campo Obrigatório"/>			                                  
+			                          		<p></p>
+			                          		Senha
+			                                <p></p>
+			                                <h:inputSecret class="form-control" value="#{userMBean.user.password}" required="true" requiredMessage="Senha Obrigatória"/>			                                  
+			                          		<p></p>
+			                          		Admin
+			                                <p></p>
+			                                <h:selectBooleanCheckbox class="form-control" value="#{userMBean.user.admin}"/>			                                  
+			                          		<p></p>
+			                          		<h:commandButton class="btncadastrar" action="#{userMBean.addUser()}" value=""/>
+											<h:commandButton class="btnlistagem" action="#{userMBean.listUsers()}" value="" immediate="true"/>											
+			                          </div>
+			                        </div>		
+									</fieldset>
+								</h:form>
+                            </div> <!-- /#list -->                         
+                        </div>  <!-- /#main -->
+
+
+                    </div>
+                </div> 
+                  
+  	</ui:define>
+</ui:composition>

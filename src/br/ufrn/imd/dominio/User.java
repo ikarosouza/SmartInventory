@@ -18,6 +18,7 @@ public class User {
 	private String login;
 	@NotNull
 	private String password;
+	private boolean admin;
 	
 	public User(){}
 	
@@ -50,5 +51,13 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 }
