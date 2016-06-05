@@ -422,7 +422,27 @@ body{
 	height: 34px;
 }
 
-
+.btnnovousuario{
+ 	background: transparent;
+ 	position: relative;
+ 	left: -50px;
+ 	border: none;	
+ 	background-image: url("../resources/img/btn-novousuario.png");	
+ 	background-repeat: no-repeat;
+ 	width: 150px;
+ 	height: 34px;	
+ }
+ 
+ .btnnovousuario:hover{
+ 	background: transparent;
+ 	position: relative;
+ 	left: -50px;
+ 	border: none;
+ 	background-image: url("../resources/img/btn-novousuario-hover.png");
+ 	background-repeat: no-repeat;
+ 	width: 150px;
+ 	height: 34px;
+ }
 
 
 .input-user{
