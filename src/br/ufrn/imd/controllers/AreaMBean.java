@@ -1,13 +1,16 @@
 package br.ufrn.imd.controllers;
 
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.inject.Inject;
 
-import br.ufrn.imd.dao.AreaDao;
 import br.ufrn.imd.dominio.Area;
+import br.ufrn.imd.exceptions.NegocioException;
+import br.ufrn.imd.negocio.AreaService;
 
 @ManagedBean
 @SessionScoped
@@ -17,8 +20,8 @@ public class AreaMBean {
 	
 	private DataModel<Area> areasModel;
 	
-	@Inject
-	private AreaDao areaDao;
+	@EJB
+	private AreaService areaService;
 	
 	public AreaMBean() {
 		area = new Area();
@@ -30,27 +33,39 @@ public class AreaMBean {
 	}
 	
 	public String listAreas() {
-		areasModel = new ListDataModel<Area>(areaDao.list());
+		areasModel = new ListDataModel<Area>(areaService.list());
 		return "/views/area/list.jsf";
 	}
 	
 	public String addArea() {
 		//area.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
-		areaDao.save(area);
+		try {
+			areaService.save(area);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);			
+		}
 		area = new Area();
 		return "/views/area/form.jsf";
 	}
 	
 	public String editArea(){
 		area = areasModel.getRowData();
-		areaDao.save(area);
+		try {
+			areaService.save(area);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}		
 		return "/views/area/form.jsf";
 	}
 	
 	public String removeArea() {
 		Area areaRemoved = areasModel.getRowData();
-		areaDao.remove(areaRemoved);
-		areasModel = new ListDataModel<Area>(areaDao.list());
+		areaService.remove(areaRemoved);
+		areasModel = new ListDataModel<Area>(areaService.list());
 		return "/views/Area/list.jsf";
 	}
 
@@ -64,7 +79,7 @@ public class AreaMBean {
 
 	public DataModel<Area> getAreasModel() {
 		if(areasModel == null){
-			areasModel = new ListDataModel<Area>(areaDao.list());
+			areasModel = new ListDataModel<Area>(areaService.list());
 		}
 		return areasModel;
 	}

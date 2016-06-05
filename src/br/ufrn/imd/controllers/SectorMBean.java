@@ -1,13 +1,18 @@
 package br.ufrn.imd.controllers;
 
+import javax.ejb.EJB;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.inject.Inject;
 
-import br.ufrn.imd.dao.SectorDao;
 import br.ufrn.imd.dominio.Sector;
+import br.ufrn.imd.exceptions.NegocioException;
+import br.ufrn.imd.negocio.SectorService;
 
 @ManagedBean
 @SessionScoped
@@ -17,8 +22,8 @@ public class SectorMBean {
 	
 	private DataModel<Sector> sectorsModel;
 	
-	@Inject
-	private SectorDao sectorDao;
+	@EJB
+	private SectorService sectorService;
 	
 	public SectorMBean() {
 		sector = new Sector();
@@ -30,27 +35,39 @@ public class SectorMBean {
 	}
 	
 	public String listSectors() {
-		sectorsModel = new ListDataModel<Sector>(sectorDao.list());
+		sectorsModel = new ListDataModel<Sector>(sectorService.list());
 		return "/views/sector/list.jsf";
 	}
 	
 	public String addSector() {
 		//sector.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
-		sectorDao.save(sector);
+		try {
+			sectorService.save(sector);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}
 		sector = new Sector();
 		return "/views/sector/form.jsf";
 	}
 	
 	public String editSector(){
 		sector = sectorsModel.getRowData();
-		sectorDao.save(sector);
+		try {
+			sectorService.save(sector);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}		
 		return "/views/sector/form.jsf";
 	}
 	
 	public String removeSector() {
 		Sector sectorRemoved = sectorsModel.getRowData();
-		sectorDao.remove(sectorRemoved);
-		sectorsModel = new ListDataModel<Sector>(sectorDao.list());
+		sectorService.remove(sectorRemoved);
+		sectorsModel = new ListDataModel<Sector>(sectorService.list());
 		return "/views/sector/list.jsf";
 	}
 
@@ -64,7 +81,7 @@ public class SectorMBean {
 
 	public DataModel<Sector> getSectorsModel() {
 		if(sectorsModel == null){
-			sectorsModel = new ListDataModel<Sector>(sectorDao.list());
+			sectorsModel = new ListDataModel<Sector>(sectorService.list());
 		}
 		return sectorsModel;
 	}

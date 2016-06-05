@@ -1,13 +1,19 @@
 package br.ufrn.imd.controllers;
 
+import javax.ejb.EJB;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.inject.Inject;
 
-import br.ufrn.imd.dao.EquipmentDao;
+
 import br.ufrn.imd.dominio.Equipment;
+import br.ufrn.imd.exceptions.NegocioException;
+import br.ufrn.imd.negocio.EquipmentService;
 
 @ManagedBean
 @SessionScoped
@@ -17,8 +23,8 @@ public class EquipmentMBean {
 	
 	private DataModel<Equipment> equipmentsModel;
 	
-	@Inject
-	private EquipmentDao equipmentDao;
+	@EJB
+	private EquipmentService equipmentService;
 	
 	public EquipmentMBean() {
 		equipment = new Equipment();
@@ -30,27 +36,39 @@ public class EquipmentMBean {
 	}
 	
 	public String listEquipments() {
-		equipmentsModel = new ListDataModel<Equipment>(equipmentDao.list());
+		equipmentsModel = new ListDataModel<Equipment>(equipmentService.list());
 		return "/views/equipment/list.jsf";
 	}
 	
 	public String editEquipment(){
 		equipment = equipmentsModel.getRowData();
-		equipmentDao.save(equipment);
+		try {
+			equipmentService.save(equipment);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}		
 		return "/views/equipment/form.jsf";
 	}
 	
 	public String addEquipment() {
 		//equipment.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
-		equipmentDao.save(equipment);
+		try {
+			equipmentService.save(equipment);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}
 		equipment = new Equipment();
 		return "/views/equipment/form.jsf";
 	}
 	
 	public String removeEquipment() {
 		Equipment equpmentRemoved = equipmentsModel.getRowData();
-		equipmentDao.remove(equpmentRemoved);
-		equipmentsModel = new ListDataModel<Equipment>(equipmentDao.list());
+		equipmentService.remove(equpmentRemoved);
+		equipmentsModel = new ListDataModel<Equipment>(equipmentService.list());
 		return "/views/equipment/list.jsf";
 	}
 
@@ -64,7 +82,7 @@ public class EquipmentMBean {
 
 	public DataModel<Equipment> getEquipmentsModel() {
 		if(equipmentsModel == null){
-			equipmentsModel = new ListDataModel<Equipment>(equipmentDao.list());
+			equipmentsModel = new ListDataModel<Equipment>(equipmentService.list());
 		}
 		return equipmentsModel;
 	}
@@ -72,7 +90,5 @@ public class EquipmentMBean {
 	public void setEquipmentsModel(DataModel<Equipment> equipmentsModel) {
 		this.equipmentsModel = equipmentsModel;
 	}
-	
-	
 	
 }

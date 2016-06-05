@@ -1,13 +1,18 @@
 package br.ufrn.imd.controllers;
 
+import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.inject.Inject;
 
-import br.ufrn.imd.dao.EmployeeDao;
+
 import br.ufrn.imd.dominio.Employee;
+import br.ufrn.imd.exceptions.NegocioException;
+import br.ufrn.imd.negocio.EmployeeService;
 
 @ManagedBean
 @SessionScoped
@@ -17,8 +22,8 @@ public class EmployeeMBean {
 	
 	private DataModel<Employee> employeesModel;
 	
-	@Inject
-	private EmployeeDao employeeDao;
+	@EJB
+	private EmployeeService employeeService;
 	
 	public EmployeeMBean() {
 		employee = new Employee();
@@ -30,27 +35,39 @@ public class EmployeeMBean {
 	}
 	
 	public String listEmployees() {
-		employeesModel = new ListDataModel<Employee>(employeeDao.list());
+		employeesModel = new ListDataModel<Employee>(employeeService.list());
 		return "/views/employee/list.jsf";
 	}
 	
 	public String addEmployee() {
 		//employee.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
-		employeeDao.save(employee);
+		try {
+			employeeService.save(employee);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}
 		employee = new Employee();
 		return "/views/employee/form.jsf";
 	}
 	
 	public String editEmployee(){
 		employee = employeesModel.getRowData();
-		employeeDao.save(employee);
+		try {
+			employeeService.save(employee);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}		
 		return "/views/employee/form.jsf";
 	}
 	
 	public String removeEmployee() {
 		Employee employeeRemoved = employeesModel.getRowData();
-		employeeDao.remove(employeeRemoved);
-		employeesModel = new ListDataModel<Employee>(employeeDao.list());
+		employeeService.remove(employeeRemoved);
+		employeesModel = new ListDataModel<Employee>(employeeService.list());
 		return "/views/employee/list.jsf";
 	}
 
@@ -64,7 +81,7 @@ public class EmployeeMBean {
 
 	public DataModel<Employee> getEmployeesModel() {
 		if(employeesModel == null){
-			employeesModel = new ListDataModel<Employee>(employeeDao.list());
+			employeesModel = new ListDataModel<Employee>(employeeService.list());
 		}
 		return employeesModel;
 	}
@@ -72,6 +89,5 @@ public class EmployeeMBean {
 	public void setEmployeesModel(DataModel<Employee> employeesModel) {
 		this.employeesModel = employeesModel;
 	}
-	
 	
 }

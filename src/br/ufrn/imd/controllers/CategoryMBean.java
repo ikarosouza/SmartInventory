@@ -1,22 +1,29 @@
 package br.ufrn.imd.controllers;
 
+import javax.ejb.EJB;
+
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.inject.Inject;
 
-import br.ufrn.imd.dao.CategoryDao;
+
 import br.ufrn.imd.dominio.Category;
+import br.ufrn.imd.exceptions.NegocioException;
+import br.ufrn.imd.negocio.CategoryService;
 
 @ManagedBean
 @SessionScoped
 public class CategoryMBean {
+	
 	private Category category;
+	
 	private DataModel<Category> categoriesModel;
 	
-	@Inject
-	private CategoryDao categoryDao;
+	@EJB
+	private CategoryService categoryService;
 	
 	public CategoryMBean() {
 		category = new Category();
@@ -28,27 +35,39 @@ public class CategoryMBean {
 	}
 	
 	public String listCategories() {
-		categoriesModel = new ListDataModel<Category>(categoryDao.list());
+		categoriesModel = new ListDataModel<Category>(categoryService.list());
 		return "/views/category/list.jsf";
 	}
 	
 	public String addCategory() {
 		//category.setUsuarioCadastro(usuarioMBean.getUsuarioLogado());
-		categoryDao.save(category);
+		try {
+			categoryService.save(category);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}
 		category = new Category();
 		return "/views/category/form.jsf";
 	}
 	
 	public String editCategory(){
 		category = categoriesModel.getRowData();
-		categoryDao.save(category);
+		try {
+			categoryService.save(category);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}		
 		return "/views/category/form.jsf";
 	}
 	
 	public String removeCategory() {
 		Category categoryRemoved = categoriesModel.getRowData();
-		categoryDao.remove(categoryRemoved);
-		categoriesModel = new ListDataModel<Category>(categoryDao.list());
+		categoryService.remove(categoryRemoved);
+		categoriesModel = new ListDataModel<Category>(categoryService.list());
 		return "/views/category/list.jsf";
 	}
 
@@ -62,7 +81,7 @@ public class CategoryMBean {
 
 	public DataModel<Category> getCategoriesModel() {
 		if(categoriesModel == null){
-			categoriesModel = new ListDataModel<Category>(categoryDao.list());
+			categoriesModel = new ListDataModel<Category>(categoryService.list());
 		}
 		return categoriesModel;
 	}
