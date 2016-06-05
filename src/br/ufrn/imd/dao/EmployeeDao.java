@@ -1,20 +1,22 @@
 package br.ufrn.imd.dao;
 
 import java.util.List;
+
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import br.ufrn.imd.dominio.Employee;
+
 
 @Stateless
 public class EmployeeDao {
 	@PersistenceContext
     private EntityManager em;
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
 	public Employee save(Employee employee) {
 		if(employee.getMatricula() == 0)
 			em.persist(employee);
@@ -23,7 +25,7 @@ public class EmployeeDao {
 		return employee;
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	
 	public void remove(Employee employee) {
 		employee = em.find(Employee.class, employee.getMatricula());
 		em.remove(employee);
@@ -32,5 +34,18 @@ public class EmployeeDao {
 	@SuppressWarnings("unchecked")
 	public List<Employee> list() {
 		return (List<Employee>) em.createQuery("select e from Employee e").getResultList();
+	}
+	
+	public Employee searchEmployee(String name){
+		String jpaql ="select e from Employee e" + " where e.name = :name";
+		
+		Query q = em.createQuery(jpaql);
+		q.setParameter("name", name);
+		
+		try{
+			return (Employee) q.getSingleResult();
+		} catch (NoResultException e){
+			return null;
+		}
 	}
 }

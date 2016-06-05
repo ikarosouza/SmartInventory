@@ -2,20 +2,23 @@ package br.ufrn.imd.dao;
 
 import java.util.List;
 
+
+
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import br.ufrn.imd.dominio.Sector;
 
+
 @Stateless
 public class SectorDao {
+	
 	@PersistenceContext
     private EntityManager em;
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Sector save(Sector sector) {
 		if(sector.getId() == 0)
 			em.persist(sector);
@@ -24,7 +27,6 @@ public class SectorDao {
 		return sector;
 	}
 	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void remove(Sector sector) {
 		sector = em.find(Sector.class, sector.getId());
 		em.remove(sector);
@@ -33,5 +35,18 @@ public class SectorDao {
 	@SuppressWarnings("unchecked")
 	public List<Sector> list() {
 		return (List<Sector>) em.createQuery("select s from Sector s").getResultList();
+	}
+	
+	public Sector searchSector(String name){
+		String jpaql ="select s from Sector s" + " where s.area.name = :name";
+		
+		Query q = em.createQuery(jpaql);
+		q.setParameter("name", name);
+		
+		try{
+			return (Sector) q.getSingleResult();
+		} catch (NoResultException e){
+			return null;
+		}
 	}
 }
