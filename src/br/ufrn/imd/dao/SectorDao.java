@@ -38,7 +38,7 @@ public class SectorDao {
 	}
 	
 	public Sector searchSector(String name){
-		String jpaql ="select s from Sector s" + " where s.area.name = :name";
+		String jpaql ="select s from Sector s" + " where s.name = :name";
 		
 		Query q = em.createQuery(jpaql);
 		q.setParameter("name", name);
