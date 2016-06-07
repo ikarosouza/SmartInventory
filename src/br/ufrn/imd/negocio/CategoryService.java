@@ -23,11 +23,14 @@ public class CategoryService {
 		//verificar se a area existe
 	
 		Category categoryBD = categoryDao.searchCategory(category.getDescription());
-		if(categoryBD == null || category.getId() > 0){
+		if(categoryBD == null && category.getId() == 0){
 			categoryDao.save(category);
 		}
+		else
+			if(categoryBD.getDescription().equals(category.getDescription()))
+				throw new NegocioException("Categoria já cadastrada.");			
 		else{
-			throw new NegocioException("Categoria já cadastrada.");
+			categoryDao.save(category);
 		}
 		return category;
 	}

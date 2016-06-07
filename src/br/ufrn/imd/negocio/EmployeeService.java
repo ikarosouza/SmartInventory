@@ -23,19 +23,14 @@ public class EmployeeService {
 		//verificar se o empregado existe
 	
 		Employee employeeBD = employeeDao.searchEmployee(employee.getMatricula());
-		if(employeeBD == null || employee.getMatricula() > 0 && employee.getMatricula() != employeeBD.getMatricula()){
+		if( (employeeBD == null || employee.getMatricula() > 0) && employee.getMatricula() != employeeBD.getMatricula()){
 			employeeDao.save(employee);
 		}
-		else
-			if(employeeBD != null && employee.getMatricula() > 0){
-				employeeDao.save(employee);
-			}
 		else{						
 			throw new NegocioException("Funcionário já cadastrado.");
 		}
 		return employee;
 	}
-	
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void remove(Employee employee){
