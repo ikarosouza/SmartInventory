@@ -1,17 +1,18 @@
 package br.ufrn.imd.controllers;
 
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
-import javax.inject.Inject;
 
-import br.ufrn.imd.dao.UserDao;
+
 import br.ufrn.imd.dominio.User;
+import br.ufrn.imd.exceptions.NegocioException;
+import br.ufrn.imd.negocio.UserService;
 
 @ManagedBean
 @SessionScoped
@@ -25,8 +26,8 @@ public class UserMBean {
 	
 	private boolean logged = false;
 	
-	@Inject
-	private UserDao userDao;
+	@EJB
+	private UserService userService;
 	
 	public UserMBean() {
 		user = new User();
@@ -34,7 +35,7 @@ public class UserMBean {
 
 	public String logar() {
 		
-		User userBd = userDao.searchLogin(user.getLogin());
+		User userBd = userService.authenticateLogin(user);
 		
 		if(userBd != null) {
 			//existe e senha está correta
@@ -67,26 +68,38 @@ public class UserMBean {
 	}
 	
 	public String listUsers(){
-		usersModel = new ListDataModel<User>(userDao.list());
+		usersModel = new ListDataModel<User>(userService.list());
 		return "/views/user/list.jsf";
 	}
 	
 	public String addUser(){
-		userDao.save(user);
+		try {
+			userService.save(user);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}
 		user = new User();
 		return "/pages/user/form.jsf";
 	}
 	
 	public String editUser(){
 		user = usersModel.getRowData();
-		userDao.save(user);
+		try {
+			userService.save(user);
+		} catch (NegocioException e) {
+			FacesMessage msg = new FacesMessage(e.getMessage());
+			msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+			FacesContext.getCurrentInstance().addMessage("", msg);
+		}
 		return "/views/user/form.jsf";
 	}
 	
 	public String removeUser(){
 		User userRemoved = usersModel.getRowData();
-		userDao.remove(userRemoved);
-		usersModel = new ListDataModel<User>(userDao.list());
+		userService.remove(userRemoved);
+		usersModel = new ListDataModel<User>(userService.list());
 		return "/views/user/list.jsf";
 	}
 	
@@ -108,7 +121,7 @@ public class UserMBean {
 
 	public DataModel<User> getUsersModel() {
 		if(usersModel == null){
-			usersModel = new ListDataModel<User>(userDao.list());
+			usersModel = new ListDataModel<User>(userService.list());
 		}
 		return usersModel;
 	}

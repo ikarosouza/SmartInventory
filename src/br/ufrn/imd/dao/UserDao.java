@@ -2,9 +2,8 @@ package br.ufrn.imd.dao;
 
 import java.util.List;
 
+
 import javax.ejb.Stateless;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -17,6 +16,24 @@ public class UserDao {
 
 	@PersistenceContext
 	private EntityManager em;
+
+	public User save(User user) {
+		if(user.getMatricula() == 0)
+			em.persist(user);
+		else
+			em.merge(user);
+		return user;
+	}
+	
+	public void remove(User user) {
+		user = em.find(User.class, user.getMatricula());
+		em.remove(user);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<User> list() {
+		return (List<User>) em.createQuery("select u from User u").getResultList();
+	}
 
 	public User searchLogin(String login) {
 		
@@ -31,25 +48,18 @@ public class UserDao {
 			return null;
 		}
 	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public User save(User user) {
-		if(user.getMatricula() == 0)
-			em.persist(user);
-		else
-			em.merge(user);
-		return user;
+
+	public User searchUser(int matricula){
+		String jpaql ="select u from User u" + " where u.matricula = :matricula";
+		
+		Query q = em.createQuery(jpaql);
+		q.setParameter("matricula", matricula);
+		
+		try{
+			return (User) q.getSingleResult();
+		} catch (NoResultException e){
+			return null;
 	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void remove(User user) {
-		user = em.find(User.class, user.getMatricula());
-		em.remove(user);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public List<User> list() {
-		return (List<User>) em.createQuery("select u from User u").getResultList();
-	}
-	
+}
+
 }
