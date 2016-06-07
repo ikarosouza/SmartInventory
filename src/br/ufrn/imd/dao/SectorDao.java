@@ -37,14 +37,14 @@ public class SectorDao {
 		return (List<Sector>) em.createQuery("select s from Sector s").getResultList();
 	}
 	
-	public Sector searchSector(String name){
+	public List<Sector> searchSector(String name){
 		String jpaql ="select s from Sector s" + " where s.name = :name";
 		
 		Query q = em.createQuery(jpaql);
 		q.setParameter("name", name);
 		
 		try{
-			return (Sector) q.getSingleResult();
+			return (List<Sector>) q.getResultList();
 		} catch (NoResultException e){
 			return null;
 		}

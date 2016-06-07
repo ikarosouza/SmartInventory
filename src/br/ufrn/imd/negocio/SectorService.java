@@ -22,15 +22,17 @@ public class SectorService {
 	
 		//verificar se o setor existe
 	
-		Sector sectorBD = sectorDao.searchSector(sector.getName());
-		if(sectorBD == null || sector.getId() > 0){
-			sectorDao.save(sector);
-		}
-		else {
-			if(sector.getArea().getName().equals(sectorBD.getArea().getName()))
-				throw new NegocioException("Setor já cadastrado.");
-			else
+		List<Sector> sectors = sectorDao.searchSector(sector.getName());
+		for(Sector sectorBD : sectors){
+			if(sectorBD == null && sector.getId() > 0){
 				sectorDao.save(sector);
+			}
+			else {
+				if(sector.getArea().getName().equals(sectorBD.getArea().getName()))
+					throw new NegocioException("Setor já cadastrado.");
+				else
+					sectorDao.save(sector);
+			}
 		}
 		return sector;
 	}
