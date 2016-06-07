@@ -65,12 +65,30 @@
 	                          	<a href="/SmartInventory/views/index.jsf">
 	                          	<i class="fa fa-home"></i>
 	                          	<span>Home</span></a>
-	                          	<h:commandLink action="#{categoryMBean.listCategories()}" value="Categoria" />	                          
-	                          	<h:commandLink action="#{equipmentMBean.listEquipments()}" value="Equipamento" />
-	                          	<h:commandLink action="#{employeeMBean.listEmployees()}" value="Funcionário" />
-	                          	<h:commandLink action="#{sectorMBean.listSectors()}" value="Setor" />
-	                          	<h:commandLink action="#{areaMBean.listAreas()}" value="Área" />
-	                          	<h:commandLink action="#{userMBean.listUsers()}" value="Usuario" rendered="#{userMBean.userLogged.admin}"/>	
+	                          	<h:commandLink action="#{categoryMBean.listCategories()}">
+	                          		<i class="fa fa-tag"></i>
+	                          		<span>Categoria</span>
+	                          	</h:commandLink>	                          
+	                          	<h:commandLink action="#{equipmentMBean.listEquipments()}">
+	                          		<i class="fa fa-desktop"></i>
+	                          		<span>Equipamento</span>
+	                          	</h:commandLink>
+	                          	<h:commandLink action="#{employeeMBean.listEmployees()}">
+	                          		<i class="fa fa-suitcase"></i>
+	                          		<span>Funcionario</span>
+	                          	</h:commandLink>
+	                          	<h:commandLink action="#{sectorMBean.listSectors()}">
+	                          		<i class="fa fa-building-o"></i>
+	                          		<span>Setor</span>
+	                          	</h:commandLink>
+	                          	<h:commandLink action="#{areaMBean.listAreas()}">
+	                          		<i class="fa fa-star-o"></i>
+	                          		<span>Area</span>
+	                          	</h:commandLink>
+	                          	<h:commandLink action="#{userMBean.listUsers()}" rendered="#{userMBean.userLogged.admin}">
+	                          		<i class="fa fa-user"></i>
+	                          		<span>Usuario</span>
+	                          	</h:commandLink>	
 	                          </h:form>
 	                  </li>   
 	              </ul>

@@ -5,6 +5,7 @@
 	template="/include/template.xhtml">
 
 	<ui:define name="conteudo">
+	<ui:fragment rendered="#{userMBean.userLogged.admin}">
                   <div class="row">
                     <div class="col-lg-12">
 
@@ -53,6 +54,6 @@
 
                     </div>
                 </div> 
-                  
+    </ui:fragment> 
   	</ui:define>
 </ui:composition>

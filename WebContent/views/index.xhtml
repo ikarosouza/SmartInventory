@@ -5,22 +5,8 @@
 	template="/include/template.xhtml">
 
 	<ui:define name="conteudo">	                 
-		<div class="row mtbox">
+		<div class="row mtbox">			
 			<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
-				<div class="box1">
-					<span class="fa fa-desktop"></span>
-					<h3><h:outputLabel value="#{equipmentMBean.equipmentsModel.rowCount}" /></h3>
-				</div>
-				<p><h:outputLabel value="#{equipmentMBean.equipmentsModel.rowCount}" /> equipamentos</p>
-			</div>
-			<div class="col-md-2 col-sm-2 box0">
-				<div class="box1">
-					<span class="fa fa-users"></span>
-					<h3><h:outputLabel value="#{userMBean.usersModel.rowCount}" /></h3>
-				</div>
-				<p><h:outputLabel value="#{userMBean.usersModel.rowCount}" /> usuários</p>
-			</div>
-			<div class="col-md-2 col-sm-2 box0">
 				<div class="box1">
 					<span class="fa fa-tags"></span>
 					<h3><h:outputLabel value="#{categoryMBean.categoriesModel.rowCount}" /></h3>
@@ -29,18 +15,41 @@
 			</div>
 			<div class="col-md-2 col-sm-2 box0">
 				<div class="box1">
-					<span class="fa fa-building-o"></span>
-					<h3><h:outputLabel value="#{sectorMBean.sectorsModel.rowCount}" /></h3>
+					<span class="fa fa-desktop"></span>
+					<h3><h:outputLabel value="#{equipmentMBean.equipmentsModel.rowCount}" /></h3>
 				</div>
-			<p><h:outputLabel value="#{sectorMBean.sectorsModel.rowCount}" /> setores</p>
-			</div>
+				<p><h:outputLabel value="#{equipmentMBean.equipmentsModel.rowCount}" /> equipamentos</p>
+			</div>			
             <div class="col-md-2 col-sm-2 box0">
 				<div class="box1">
 					<span class="fa fa-suitcase"></span>
 					<h3><h:outputLabel value="#{employeeMBean.employeesModel.rowCount}" /></h3>
 				</div>
 				<p><h:outputLabel value="#{employeeMBean.employeesModel.rowCount}" /> funcionários</p>
-			</div>                 	
+			</div>
+			<div class="col-md-2 col-sm-2 box0">
+				<div class="box1">
+					<span class="fa fa-building-o"></span>
+					<h3><h:outputLabel value="#{sectorMBean.sectorsModel.rowCount}" /></h3>
+				</div>
+			<p><h:outputLabel value="#{sectorMBean.sectorsModel.rowCount}" /> setores</p>
+			</div>
+			<div class="col-md-2 col-sm-2 box0">
+				<div class="box1">
+					<span class="fa fa-star-o"></span>
+					<h3><h:outputLabel value="#{areaMBean.areasModel.rowCount}" /></h3>
+				</div>
+			<p><h:outputLabel value="#{areaMBean.areasModel.rowCount}" /> areas</p>
+			</div>
+			<ui:fragment rendered="#{userMBean.userLogged.admin}">
+				<div class="col-md-2 col-sm-2 col-md-offset-5 box0">
+					<div class="box1">
+						<span class="fa fa-users"></span>
+						<h3><h:outputLabel value="#{userMBean.usersModel.rowCount}" /></h3>
+					</div>
+					<p><h:outputLabel value="#{userMBean.usersModel.rowCount}" /> usuários</p>
+				</div>
+			</ui:fragment>                	
 		</div><!-- /row mt -->	
 	</ui:define>
 </ui:composition>
