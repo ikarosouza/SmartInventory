@@ -22,12 +22,15 @@ public class EquipmentService {
 	
 		//verificar se o equipamento existe
 	
-		Equipment equipmentBD = equipmentDao.searchEquipment(equipment.getSerialNumber());
-		if(equipmentBD == null || equipment.getTombo() > 0){
+		Equipment equipmentBD = equipmentDao.searchEquipment(equipment.getTombo());
+		if(equipmentBD == null && equipment.getTombo() >= 0){
 			equipmentDao.save(equipment);
 		}
 		else{
-			throw new NegocioException("Equipamento já cadastrado.");
+			if((equipmentBD != null && equipment.getTombo() == 0)){
+				equipmentDao.save(equipment);
+			} else
+				throw new NegocioException("Equipamento já cadastrado.");
 		}
 		return equipment;
 	}

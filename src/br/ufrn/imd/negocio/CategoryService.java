@@ -23,7 +23,7 @@ public class CategoryService {
 		//verificar se a area existe
 	
 		Category categoryBD = categoryDao.searchCategory(category.getDescription());
-		if(categoryBD == null && category.getId() == 0){
+		if(categoryBD == null && category.getId() >= 0){
 			categoryDao.save(category);
 		}
 		else

@@ -1,6 +1,5 @@
 package br.ufrn.imd.dominio;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -10,7 +9,6 @@ import javax.persistence.ManyToOne;
 public class Equipment {
 	@Id
 	private int tombo;
-	@Column(unique=true)
 	private String serialNumber;
 	private String model;
 	private String brand;

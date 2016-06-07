@@ -36,16 +36,16 @@ public class EquipmentDao {
 		return (List<Equipment>) em.createQuery("select e from Equipment e").getResultList();
 	}
 	
-	public Equipment searchEquipment(String serialNumber){
-		String jpaql ="select e from Equipment e" + " where e.serialNumber = :serialNumber";
+	public Equipment searchEquipment(int tombo){
+		String jpaql ="select e from Equipment e" + " where e.tombo = :tombo";
 		
 		Query q = em.createQuery(jpaql);
-		q.setParameter("serialNumber", serialNumber);
+		q.setParameter("tombo", tombo);
 		
 		try{
 			return (Equipment) q.getSingleResult();
 		} catch (NoResultException e){
 			return null;
 		}
-	}
+	}	
 }
