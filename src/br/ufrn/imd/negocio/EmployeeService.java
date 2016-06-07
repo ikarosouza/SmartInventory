@@ -37,7 +37,6 @@ public class EmployeeService {
 		return employee;
 	}
 	
-	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void remove(Employee employee){
 		employeeDao.remove(employee);

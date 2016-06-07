@@ -36,7 +36,7 @@ public class EmployeeDao {
 		return (List<Employee>) em.createQuery("select e from Employee e").getResultList();
 	}
 	
-	public Employee searchEmployee(int matricula){
+	public Employee searchEmployee( int matricula){
 				
 		String jpaql ="select e from Employee e" + " where e.matricula = :matricula";
 		
