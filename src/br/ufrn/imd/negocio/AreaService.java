@@ -22,7 +22,7 @@ public class AreaService {
 		//verificar se a area existe
 	
 		Area areaBD = areaDao.searchArea(area.getName());
-		if((areaBD == null && area.getId() == 0)){
+		if((areaBD == null && area.getId() >= 0)){
 			areaDao.save(area);
 		}
 		else{
