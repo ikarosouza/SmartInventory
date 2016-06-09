@@ -40,5 +40,28 @@ public class AreaConverter implements Converter {
 			areas.put(String.valueOf(area.getId()), area);
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((areas == null) ? 0 : areas.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		if (areas == null) {
+			if (AreaConverter.areas != null)
+				return false;
+		} else if (!areas.equals(AreaConverter.areas))
+			return false;
+		return true;
+	}
 }
 

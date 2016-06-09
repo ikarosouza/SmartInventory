@@ -39,5 +39,27 @@ public class EmployeeConverter implements Converter {
 		if(!employees.containsKey(String.valueOf(employee.getMatricula())))
 			employees.put(String.valueOf(employee.getMatricula()), employee);
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((employees == null) ? 0 : employees.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		if (employees == null) {
+			if (EmployeeConverter.employees != null)
+				return false;
+		} else if (!employees.equals(EmployeeConverter.employees))
+			return false;
+		return true;
+	}
 }

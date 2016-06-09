@@ -27,17 +27,11 @@ public class SectorService {
 			sectorDao.save(sector);
 		} else {
 			for(Sector sectorBD : sectors){
-				if(sectorBD == null && sector.getId() > 0){
-					sectorDao.save(sector);
+				if(sector.getArea().getName().equals(sectorBD.getArea().getName()))
+					throw new NegocioException("Setor já cadastrado.");					
 				}
-				else {
-					if(sector.getArea().getName().equals(sectorBD.getArea().getName()))
-						throw new NegocioException("Setor já cadastrado.");
-					else
-						sectorDao.save(sector);
-				}
+			sectorDao.save(sector);
 			}
-		}
 		return sector;
 	}
 		
