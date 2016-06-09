@@ -22,10 +22,12 @@
 			                          <div class="col-lg-4">
 			                          </div>
 			                          <div class="col-sm-3">
+			                          		<ui:fragment rendered="#{equipmentMBean.equipment.tombo == 0}">
 			                                Tombo
 			                                <p></p>
 			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.tombo}" required="true" requiredMessage="Tombo Obrigatório"/>			                                  
 			                          		<p></p>
+			                          		</ui:fragment>
 			                          		Num. de Serie
 			                                <p></p>
 			                                <h:inputText class="form-control" value="#{equipmentMBean.equipment.serialNumber}" required="true" requiredMessage="Num. de Serie Obrigatório"/>			                                  
@@ -52,7 +54,7 @@
 			                          		<p></p>
 			                          		Categoria
 			                                <p></p>
-											<h:selectOneMenu class="form-control" value="#{equipmentMBean.equipment.category}" converter="categoryConverter">
+											<h:selectOneMenu class="form-control" value="#{equipmentMBean.equipment.category}" converter="categoryConverter" name="categoria">
 												<f:selectItem id="cat" itemLabel="Selecione a categoria" itemValue="#{equipmentMBean.equipment.category}" />
 												<f:selectItems  value ="#{categoryMBean.categoriesModel}" var="category" itemLabel="#{category.description}" itemValue="#{category}" />
 											</h:selectOneMenu>

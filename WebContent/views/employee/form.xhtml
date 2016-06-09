@@ -22,10 +22,12 @@
 			                          <div class="col-lg-4">
 			                          </div>
 			                          <div class="col-sm-3">
+			                          		<ui:fragment rendered="#{employeeMBean.employee.matricula == 0}">
 			                                Matricula
 			                                <p></p>
 			                                <h:inputText class="form-control" value="#{employeeMBean.employee.matricula}" required="true" requiredMessage="Matrícula Obrigatória"/>			                                  
 			                          		<p></p>
+			                          		</ui:fragment>
 			                          		Nome
 			                                <p></p>
 			                                <h:inputText class="form-control" value="#{employeeMBean.employee.name}" required="true" requiredMessage="Nome Obrigatório"/>			                                  

@@ -25,12 +25,11 @@ public class EquipmentService {
 		Equipment equipmentBD = equipmentDao.searchEquipment(equipment.getTombo());
 		if(equipmentBD == null && equipment.getTombo() >= 0){
 			equipmentDao.save(equipment);
-		}
-		else{
-			if((equipmentBD != null && equipment.getTombo() == 0)){
+		} else if(equipmentBD != null && !equipment.equals(equipmentBD)){
+				remove(equipmentBD);
 				equipmentDao.save(equipment);
-			} else
-				throw new NegocioException("Equipamento já cadastrado.");
+		} else {
+			throw new NegocioException("Equipamento já cadastrado.");
 		}
 		return equipment;
 	}
