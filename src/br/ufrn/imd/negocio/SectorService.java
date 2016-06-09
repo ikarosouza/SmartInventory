@@ -27,7 +27,7 @@ public class SectorService {
 			sectorDao.save(sector);
 		} else {
 			for(Sector sectorBD : sectors){
-				if(sector.getArea().getName().equals(sectorBD.getArea().getName()))
+				if(sector.getArea().getName().equals(sectorBD.getArea().getName()) && sector.getId() != sectorBD.getId())
 					throw new NegocioException("Setor já cadastrado.");					
 				}
 			sectorDao.save(sector);

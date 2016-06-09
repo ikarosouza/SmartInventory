@@ -27,7 +27,7 @@ public class CategoryService {
 			categoryDao.save(category);
 		}
 		else
-			if(categoryBD.getDescription().equals(category.getDescription()))
+			if(categoryBD.getDescription().equals(category.getDescription()) && categoryBD.getId() != category.getId())
 				throw new NegocioException("Categoria já cadastrada.");			
 		else{
 			categoryDao.save(category);

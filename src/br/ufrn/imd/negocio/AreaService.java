@@ -26,7 +26,7 @@ public class AreaService {
 			areaDao.save(area);
 		}
 		else{
-			if(areaBD.getName().equals(area.getName()))
+			if(areaBD.getName().equals(area.getName()) && areaBD.getId() != area.getId())
 				throw new NegocioException("Area já cadastrada.");
 			else
 				areaDao.save(area);
